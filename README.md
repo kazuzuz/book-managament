@@ -15,4 +15,4 @@ python manage.py runserver
 
 git add .
 
-git commit -m ""
+git commit -m "message"
