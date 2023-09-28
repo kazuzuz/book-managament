@@ -16,3 +16,9 @@ python manage.py runserver
 git add .
 
 git commit -m "message"
+
+git push
+
+git remote add origin https://github.com/kazuzuz/book-managament.git
+git branch -M main
+git push -u origin main

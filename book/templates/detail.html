@@ -1,0 +1,17 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'book/style.css' %}">
+
+<body>
+    <li>作品 : {{book.title}}</li>
+    <br></br>
+    <li>作者 : {{book.author}}</li>
+    <br></br>
+    {% for review in book.review_set.all %}
+        <li>投稿日 : {{review.pub_date}}</li>
+        <br></br>
+        <li>評価 : {{review.score}}</li>
+        <br></br>
+        <li>レビュー : {{review.review_text}}</li>
+    {%endfor%}
+</body>

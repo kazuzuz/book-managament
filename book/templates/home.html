@@ -1,0 +1,25 @@
+<!--todo top gamenn -->
+<!-- css styling-->
+<!--最新5個-->
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'book/style.css' %}">
+
+<head>
+    <title>bookmanagement</title>
+</head>
+
+<body>
+    <h1>bookmanagementへ  ようこそ！</h1>
+    {% if latest_book_list %}
+        <h2>最近レビューが追加された作品</h2>
+        
+        {% for book in latest_book_list %}
+        <li>作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a></li>
+        著者 : {{book.author}}<br></br>
+        {% endfor %}
+     
+    {% else %}
+        <p>No books are available.</p>
+    {% endif %}
+</body>
