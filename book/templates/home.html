@@ -11,12 +11,12 @@
 
 <body>
     <h1>bookmanagementへ  ようこそ！</h1>
-    {% if latest_book_list %}
+    {% if latest_review_list %}
         <h2>最近レビューが追加された作品</h2>
         
-        {% for book in latest_book_list %}
-        <li>作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a></li>
-        著者 : {{book.author}}<br></br>
+        {% for review in latest_review_list %}
+        作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br>
+        著者 : {{review.book.author}}<br>
         {% endfor %}
      
     {% else %}

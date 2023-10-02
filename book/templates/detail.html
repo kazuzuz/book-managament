@@ -4,14 +4,21 @@
 
 <body>
     <li>作品 : {{book.title}}</li>
-    <br></br>
+    <br>
     <li>作者 : {{book.author}}</li>
-    <br></br>
+    <br>
     {% for review in book.review_set.all %}
         <li>投稿日 : {{review.pub_date}}</li>
-        <br></br>
+        <br>
         <li>評価 : {{review.score}}</li>
-        <br></br>
+        <br>
         <li>レビュー : {{review.review_text}}</li>
     {%endfor%}
+    
 </body>
+<p>
+<form action="{% url 'book:make_review' book.id %}" method="post">
+    {% csrf_token %}
+    <input type = "text" name ="review_text" placeholder="レビュー内容" ><br><br>
+    <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
+    <input type="submit" value="投稿">
