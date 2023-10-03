@@ -1,0 +1,28 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'book/style.css' %}">
+
+
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>ログイン画面</h1>
+
+    <form method="post" action="{% url 'book:login' %}">
+        {% csrf_token %}
+        
+        <label for="userid">ユーザーID:</label>
+        <input type="text" name="userid"><br><br>
+        <label for="password">パスワード：</label>
+        <input type="password" name="password"><br><br>
+        
+
+        <input type="submit" value="Login">
+    </form>
+    
+    <p class="message">アカウントをお持ちですか？：
+    <a href="{% url 'book:to_register' %}">アカウントを作成</a>
+    </p>
+</body>
+</html>

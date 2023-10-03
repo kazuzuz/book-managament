@@ -17,6 +17,7 @@
     
 </body>
 <p>
+    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 <form action="{% url 'book:make_review' book.id %}" method="post">
     {% csrf_token %}
     <input type = "text" name ="review_text" placeholder="レビュー内容" ><br><br>

@@ -22,4 +22,9 @@
     {% else %}
         <p>No books are available.</p>
     {% endif %}
+    {% if user.is_authenticated %}
+        <p>Welcome, {{ user.email }}!</p>
+        <p>ログアウトは<a href="{% url "book:logout"%}">こちら</a></p>
+    {% endif %}
 </body>
+

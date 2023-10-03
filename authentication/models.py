@@ -25,6 +25,7 @@ class Account(AbstractBaseUser, PermissionsMixin):
     email = models.EmailField(max_length=256, unique=True)
     is_staff = models.BooleanField(default=False)
     #追加したいフィールドがある場合はここに追加する
+
     
     USERNAME_FIELD = "email"
     
