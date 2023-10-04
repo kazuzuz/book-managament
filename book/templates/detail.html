@@ -23,3 +23,10 @@
     <input type = "text" name ="review_text" placeholder="レビュー内容" ><br><br>
     <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
     <input type="submit" value="投稿">
+</form>
+<p>
+<form action="{% url 'book:favorite' book.id %}" mathod="post">
+    {% csrf_token %}
+    <input type="submit" value="お気に入り登録">
+</form>
+

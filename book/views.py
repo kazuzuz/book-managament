@@ -8,7 +8,7 @@ from authentication.models import Account
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 
-@login_required
+
 def home(request):
     latest_review_list = Review.objects.filter(created_at__lte=timezone.now()).order_by("-created_at")[ :5]
     
@@ -85,3 +85,16 @@ def Logout(request):
     logout(request)
     # ログイン画面遷移
     return HttpResponseRedirect(reverse('book:login'))
+
+def favorite(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    account = request.user
+    book.favorite_by.add(account)
+    book.save()
+    return HttpResponseRedirect(reverse("book:home"))
+
+def dashboard(request):
+    user = request.user
+    favorite_book_list = user.book_set.all()
+    
+    return render(request, "dashboard.html",{"favorite_book_list": favorite_book_list})
