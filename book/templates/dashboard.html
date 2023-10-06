@@ -8,11 +8,12 @@
 </head>
 
 <body>
-    <h1>bookmanagementへ  ようこそ！</h1>
+    <h1>{{user.email}}さん  ようこそ！</h1>
     {% if favorite_book_list %}
         <h2>お気に入り登録した作品</h2>
         
         {% for book in favorite_book_list %}
+        <p>
         作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
         著者 : {{book.author}}<br>
         {% endfor %}

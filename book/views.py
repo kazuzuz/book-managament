@@ -34,7 +34,11 @@ def make_review(request, book_id):
         })
     return HttpResponseRedirect(reverse("book:home"))
 
+#登録ページを表示するための関数
+def to_register_page(request):
+    return render(request, "register.html" )
 
+#登録ページからの情報を受け取り、保存する関数
 def register(request):
     if request.method == 'POST':
         email = request.POST.get('email')
@@ -47,11 +51,7 @@ def register(request):
     
     return render(request, reverse("book:register"))        
 
-
-def to_register_page(request):
-    return render(request, "register.html" )
-
-
+#ログイン処理を行う関数
 def Login(request):
     # POST
     if request.method == 'POST':
@@ -69,7 +69,7 @@ def Login(request):
                 # ログイン
                 login(request,user)
                 # ホームページ遷移
-                return HttpResponseRedirect(reverse('book:home'))
+                return HttpResponseRedirect(reverse('book:dashboard'))
             else:
                 # アカウント利用不可
                 return HttpResponse("アカウントが有効ではありません")
@@ -79,20 +79,32 @@ def Login(request):
     # GET
     else:
         return render(request, 'login.html')
-    
-@login_required
+
+#ログアウトするための関数    
+
 def Logout(request):
     logout(request)
-    # ログイン画面遷移
-    return HttpResponseRedirect(reverse('book:login'))
 
-def favorite(request, book_id):
+    return render(request, template_name="logout.html")
+
+#お気に入り登録するための関数
+def add_favorite(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     account = request.user
     book.favorite_by.add(account)
     book.save()
-    return HttpResponseRedirect(reverse("book:home"))
+    return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
 
+#お気に入り解除するための関数
+def delete_favorite(request, book_id):
+    book = get_object_or_404(Book, pk=book_id)
+    account = request.user
+    book.favorite_by.remove(account)
+    
+    return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
+
+#ログイン後に表示するdashboardページ
+@login_required
 def dashboard(request):
     user = request.user
     favorite_book_list = user.book_set.all()

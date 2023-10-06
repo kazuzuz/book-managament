@@ -13,7 +13,8 @@ urlpatterns = [
     path('dashboard/', views.dashboard, name='dashboard'),
     path('login/', views.Login, name='login'),
     path('logout/', views.Logout, name='logout'),
-    path('<int:book_id>/favorite', views.favorite, name="favorite")
+    path('<int:book_id>/add_favorite', views.add_favorite, name="add_favorite"),
+    path('<int:book_id>/delete_favorite', views.delete_favorite, name="delete_favorite"),
 
 
 ]

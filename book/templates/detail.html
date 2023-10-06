@@ -25,8 +25,13 @@
     <input type="submit" value="投稿">
 </form>
 <p>
-<form action="{% url 'book:favorite' book.id %}" mathod="post">
+<form action="{% url 'book:add_favorite' book.id %}" mathod="post">
     {% csrf_token %}
     <input type="submit" value="お気に入り登録">
 </form>
+<p>
+    <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
+        {% csrf_token %}
+        <input type="submit" value="お気に入り解除">
+    </form>
 

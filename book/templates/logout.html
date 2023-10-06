@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'book/style.css' %}">
+
+
+<head>
+    <title>ログアウト完了</title>
+</head>
+<body>
+    <h1>ログアウトが完了しました</h1>
+    <p>ログアウトが正常に行われました。またのご利用をお待ちしております。</p>
+    <a href="{% url 'book:login' %}">ログイン画面に戻る</a>
+</body>
+</html>
