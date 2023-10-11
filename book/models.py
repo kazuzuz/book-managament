@@ -5,9 +5,11 @@ from django.contrib.auth import get_user_model
 
 Account = get_user_model()
 
+# TODO 紐付け方を考える
 class Book(models.Model):
     pub_date = models.DateField("出版日", null=True, blank=True)
     title = models.CharField(max_length=256)
+    # TODO Author テーブルに紐付ける
     author = models.CharField(max_length=256)
     
     favorite_by = models.ManyToManyField(Account, null=True, blank=True)

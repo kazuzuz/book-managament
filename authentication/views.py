@@ -1,14 +1,9 @@
-from django.shortcuts import render, get_object_or_404
-from django.views import generic
-from django.utils import timezone
-from .models import Review, Book
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from authentication.models import Account
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.decorators import login_required
-
-from bookmanagement.authentication.models import Account
+from .models import Account
 
 #登録ページを表示するための関数
 def to_register_page(request):
@@ -25,7 +20,7 @@ def register(request):
         
         return HttpResponseRedirect(reverse("book:home"))
     
-    return render(request, reverse("book:register"))        
+    return render(request, reverse("authentication:register"))        
 
 #ログイン処理を行う関数
 def login_page(request):

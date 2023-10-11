@@ -9,7 +9,7 @@
 <body>
     <h1>ログイン画面</h1>
 
-    <form method="post" action="{% url 'book:login' %}">
+    <form method="post" action="{% url 'authentication:login' %}">
         {% csrf_token %}
         
         <label for="userid">ユーザーID:</label>
@@ -22,7 +22,7 @@
     </form>
     
     <p class="message">アカウントをお持ちですか？：
-    <a href="{% url 'book:to_register' %}">アカウントを作成</a>
+    <a href="{% url 'authentication:to_register' %}">アカウントを作成</a>
     </p>
 </body>
 </html>

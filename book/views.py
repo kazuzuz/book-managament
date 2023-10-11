@@ -24,6 +24,7 @@ class DetailView(generic.DetailView):
 def make_review(request, book_id):
     try:
         book = get_object_or_404(Book, pk=book_id)
+        # TODO FORM　を使う
         review_text = request.POST.get('review_text')
         score = request.POST.get('score')
         review = Review(book=book, review_text=review_text, score=score)
@@ -53,7 +54,7 @@ def delete_favorite(request, book_id):
     return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
 
 #ログイン後に表示するdashboardページ
-@login_required
+@login_required(login_url="/login/")
 def dashboard(request):
     user = request.user
     favorite_book_list = user.book_set.all()

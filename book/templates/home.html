@@ -1,24 +1,30 @@
-<!--todo top gamenn -->
-<!-- css styling-->
-<!--最新5個-->
+{% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
 <link rel="stylesheet" href="{% static 'book/style.css' %}">
+{% endblock%}
 
-<head>
-    <title>bookmanagement</title>
-</head>
 
+{% block content%}
 <body>
     <h1>bookmanagementへ  ようこそ！</h1>
     {% if latest_review_list %}
         <h2>最近レビューが追加された作品</h2>
-        
-        {% for review in latest_review_list %}
-        作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br>
-        著者 : {{review.book.author}}<br>
-        {% endfor %}
-     
+        <div class="flexbox">
+            {% for review in latest_review_list %}
+            
+             <div class="card card-skin">
+                 <div class="card__imgframe"></div>
+                 <div class="card__textbox">
+                        <div class="card__titletext">
+                                <div class="flex_item">作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br></div>
+                        </div>
+                                <div class="card__overviewtext">著者 : {{review.book.author}}</div>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>No books are available.</p>
     {% endif %}
@@ -27,4 +33,4 @@
     {% endif %}
     <p>dashboardは<a href="{% url "book:dashboard"%}">こちら</a></p>
 </body>
-
+{% endblock%}

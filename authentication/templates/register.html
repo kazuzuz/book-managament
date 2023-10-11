@@ -3,7 +3,7 @@
 <link rel="stylesheet" href="{% static 'book/style.css' %}">
 
 <body>
-    <form action="{% url 'book:register' %}" method="post">
+    <form action="{% url 'authentication:register' %}" method="post">
         {% csrf_token %}
         <input type = "text" name ="email" placeholder="メールアドレス" ><br><br>
         <input type="text" name="password" placeholder="パスワード"><br><br>

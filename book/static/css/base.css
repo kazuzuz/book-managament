@@ -1,0 +1,60 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+.btn{
+    background-color: #42bfa0;
+    color:azure;
+    text-decoration: none;
+    padding: 12px;
+    padding-top: 4px;
+    border-radius: 10px;
+}
+.flexbox{
+    display: flex;
+    background-color: #42bfa0;
+    padding: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.flex_item{
+    padding: 12px;
+    background-color: #add;
+    border-radius: 8px;
+    margin: 8px;
+}
+.card{
+    width: 288px;
+    height: auto;
+    padding: 24px;
+    padding-right: 54px;
+    padding-left: 54px;
+}
+.card__imgframe{
+    width: 100%;
+    height: auto;
+    padding-top: 56.25%;
+    background: url(https://placehold.jp/640x360.png) no-repeat center;
+    background-size: cover;
+    box-sizing: border-box;
+}
+.card__textbox{
+    width: 100%;
+    height: auto;
+    padding: 20px 18px;
+    background: #ffffff;
+    box-sizing: border-box;
+}
+.card__textbox > * + *{
+    margin-top: 10px;
+}
+.card__titletext{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125%;
+}
+.card__overviewtext{
+    font-size: 16px;
+    line-height: 150%;
+}

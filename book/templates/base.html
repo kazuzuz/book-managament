@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang ="ja">
+
+
+
+<head>
+
+    <title>bookmanagement</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/header.css' %}">
+
+    {% block css %}
+    {% endblock %}
+
+    {% block js %}
+    {% endblock %}   
+</head>
+
+<body>
+    <header class ="header-section">
+        <div>
+                <div class="header-logo">LOGO</div>
+        </div>
+
+        {% comment %} ログイン時はダッシュボードへ {% endcomment %}
+        <div class="navigation-container">
+            <a href="{% url 'authentication:login' %}" class="btn">ログイン</a>
+            <a href="{% url 'authentication:to_register'%}" class="btn">ユーザー登録</a>
+        </div>
+        
+    </header>
+
+    {% block content%}
+    {% endblock%}
+    
+</body>
+
+</html>
