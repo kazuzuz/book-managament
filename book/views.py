@@ -4,8 +4,7 @@ from django.utils import timezone
 from .models import Review, Book
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
-from authentication.models import Account
-from django.contrib.auth import authenticate, login, logout
+from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 
 
@@ -14,21 +13,29 @@ def home(request):
     
     return render(request, "home.html",{"latest_review_list": latest_review_list})
 
-
-
-class DetailView(generic.DetailView):
-    model = Book
-    template_name = "detail.html"
+def detail(request, book_id):
     
+    book = get_object_or_404(Book, pk=book_id)
+    
+    return render(request, "detail.html",{"book": book})
+
 
 def make_review(request, book_id):
+    form = ReviewForm(request.POST)
     try:
         book = get_object_or_404(Book, pk=book_id)
-        # TODO FORM　を使う
-        review_text = request.POST.get('review_text')
-        score = request.POST.get('score')
-        review = Review(book=book, review_text=review_text, score=score)
-        review.save()
+        if form.is_valid():
+            review_text = form.cleaned_data['review_text']
+            score = form.cleaned_data['score']
+            review = Review(book=book, review_text=review_text, score=score)
+            review.save()
+        else:
+            return render(request, "detail.html",{
+            "book":book, "form": form
+        })
+            
+
+
     except:
         return render(request, "detail.html",{
             "book":book, "error_message": "正しく入力されていない項目があります。" 

@@ -13,7 +13,7 @@
 }
 .flexbox{
     display: flex;
-    background-color: #42bfa0;
+    background-color: white;
     padding: 12px;
     justify-content: center;
     flex-wrap: wrap;
@@ -38,6 +38,9 @@
     background: url(https://placehold.jp/640x360.png) no-repeat center;
     background-size: cover;
     box-sizing: border-box;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
 }
 .card__textbox{
     width: 100%;
@@ -45,6 +48,9 @@
     padding: 20px 18px;
     background: #ffffff;
     box-sizing: border-box;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
 }
 .card__textbox > * + *{
     margin-top: 10px;
@@ -55,6 +61,6 @@
     line-height: 125%;
 }
 .card__overviewtext{
-    font-size: 16px;
+    font-size: 12px;
     line-height: 150%;
 }

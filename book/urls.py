@@ -6,7 +6,7 @@ from . import views
 app_name = "book"
 urlpatterns = [
     path("", views.home, name="home"),
-    path("<int:pk>/", views.DetailView.as_view(), name="detail"),
+    path("<int:book_id>/", views.detail, name="detail"),
     path("<int:book_id>/review", views.make_review, name="make_review"),
     path('dashboard/', views.dashboard, name='dashboard'),
     path('<int:book_id>/add_favorite', views.add_favorite, name="add_favorite"),

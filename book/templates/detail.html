@@ -18,6 +18,13 @@
 </body>
 <p>
     {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+
+{% for key, errors in form.errors.items %}
+    {% for error in errors %}
+        <p><strong>{{ error }}</strong></p>
+    {% endfor %}
+{% endfor %} 
+
 <form action="{% url 'book:make_review' book.id %}" method="post">
     {% csrf_token %}
     <input type = "text" name ="review_text" placeholder="レビュー内容" ><br><br>
@@ -34,4 +41,3 @@
         {% csrf_token %}
         <input type="submit" value="お気に入り解除">
     </form>
-
