@@ -6,7 +6,7 @@
     <form action="{% url 'authentication:register' %}" method="post">
         {% csrf_token %}
         <input type = "text" name ="email" placeholder="メールアドレス" ><br><br>
-        <input type="text" name="password" placeholder="パスワード"><br><br>
+        <input type="password" name="password" placeholder="パスワード"><br><br>
         <input type="submit" value="登録">
     
 </body>

@@ -1,24 +1,33 @@
-<!--ログイン後にアクセスする画面-->
+{% extends 'base.html' %}
 {% load static %}
 
+{% block css %}
 <link rel="stylesheet" href="{% static 'book/style.css' %}">
+{% endblock%}
 
-<head>
-    <title>bookmanagement</title>
-</head>
 
+{% block content%}
 <body>
     <h1 class = "h1">{{user.email}}さん  ようこそ！</h1>
     {% if favorite_book_list %}
         <h2>お気に入り登録した作品</h2>
-        
-        {% for book in favorite_book_list %}
-        <p>
-        作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
-        著者 : {{book.author}}<br>
-        {% endfor %}
-     
+        <div class="flexbox">
+            {% for book in favorite_book_list %}
+            
+             <div class="card">
+                 <div class="card__imgframe"></div>
+                 <div class="card__textbox">
+                        <div class="card__titletext">
+                                <div class="flex_item">作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br></div>
+                        </div>
+                                <div class="card__overviewtext">著者 : {{book.author}}</div>
+                  </div>
+              </div>
+            {% endfor %}
+        </div>
     {% else %}
         <p>お気に入り登録した作品はありません</p>
     {% endif %}
+    <p>ログアウトは<a href="{% url "authentication:logout"%}">こちら</a></p>
 </body>
+{% endblock %}

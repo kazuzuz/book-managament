@@ -1,18 +1,43 @@
+{% extends 'base.html' %}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'book/style.css' %}">
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/review.css' %}">
+{% endblock%}
 
+
+{% block content%}
 <body>
-    <li>作品 : {{book.title}}</li>
-    <br>
-    <li>作者 : {{book.author}}</li>
-    <br>
+    <div class="main">
+        <div class="main_item">
+            <div class="imgframe"></div>
+        </div>
+
+        <div class="main_item">
+            <br>
+            <h1>{{book.title}}</h1>
+            <br>
+            <h3>{{book.author}}</h3>
+            <br>
+            <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
+                {% csrf_token %}
+                <input type="submit", class="btn2", value="お気に入りに追加">
+            </form>
+        </div>
+    </div>
     {% for review in book.review_set.all %}
-        <li>投稿日 : {{review.pub_date}}</li>
-        <br>
-        <li>評価 : {{review.score}}</li>
-        <br>
-        <li>レビュー : {{review.review_text}}</li>
+    <div class ="flexbox">
+        
+        <div class ="dotted-border">
+            <div class ="flex_item">
+                <li>投稿日 : {{review.pub_date}}</li>
+                <br>
+                <li>評価 : {{review.score}}</li>
+                <br>
+                <li>レビュー : {{review.review_text}}</li>
+            </div>
+        </div>
+    </div>
     {%endfor%}
     
 </body>
@@ -31,13 +56,10 @@
     <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
     <input type="submit" value="投稿">
 </form>
-<p>
-<form action="{% url 'book:add_favorite' book.id %}" mathod="post">
-    {% csrf_token %}
-    <input type="submit" value="お気に入り登録">
-</form>
+
 <p>
     <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
         {% csrf_token %}
         <input type="submit" value="お気に入り解除">
     </form>
+{% endblock %}

@@ -1,5 +1,4 @@
 from django import forms
-from .models import Review
 
 class ReviewForm(forms.Form):
     review_text = forms.CharField(max_length=256)

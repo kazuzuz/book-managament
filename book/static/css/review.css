@@ -1,0 +1,48 @@
+.dotted-border {
+    border-top: 1px dotted #000;
+    width: 80%;
+}
+body {
+    text-align: center;
+}
+.flexbox{
+    width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: white;
+    padding: 12px;
+    justify-content: center;
+}
+.flex_item{
+    padding: 12px;
+    background-color: white;
+    margin: 8px;
+}
+.imgframe{
+    background: url(https://placehold.jp/640x360.png) no-repeat center;
+    width: 300px; 
+    height: 300px;; 
+}
+.main{
+    display: flex;
+    justify-content: center;
+    padding: 12px;
+}
+.btn2 {
+    background-color: white;
+    color:#191d01;
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 12px;
+    width: 160px;
+    height: 48px;
+    margin-top: 52px;
+}
+.main_item{
+    background-color:white ;
+    padding: 40px;
+}
+
+  
