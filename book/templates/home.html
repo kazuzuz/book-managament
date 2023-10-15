@@ -13,16 +13,17 @@
         <h2>最近レビューが追加された作品</h2>
         <div class="flexbox">
             {% for review in latest_review_list %}
-            
+            <div class="flex_item">
              <div class="card">
                  <div class="card__imgframe"></div>
                  <div class="card__textbox">
                         <div class="card__titletext">
-                                <div class="flex_item">作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br></div>
+                                作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br>
                         </div>
                                 <div class="card__overviewtext">著者 : {{review.book.author}}</div>
                   </div>
               </div>
+            </div> 
             {% endfor %}
         </div>
     {% else %}

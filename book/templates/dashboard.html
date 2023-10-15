@@ -13,16 +13,17 @@
         <h2>お気に入り登録した作品</h2>
         <div class="flexbox">
             {% for book in favorite_book_list %}
-            
+            <div class="flex_item">
              <div class="card">
                  <div class="card__imgframe"></div>
                  <div class="card__textbox">
                         <div class="card__titletext">
-                                <div class="flex_item">作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br></div>
+                                作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
                         </div>
                                 <div class="card__overviewtext">著者 : {{book.author}}</div>
                   </div>
               </div>
+            </div>  
             {% endfor %}
         </div>
     {% else %}

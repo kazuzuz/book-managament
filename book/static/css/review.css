@@ -19,9 +19,10 @@ body {
     margin: 8px;
 }
 .imgframe{
-    background: url(https://placehold.jp/640x360.png) no-repeat center;
-    width: 300px; 
-    height: 300px;; 
+    background: url('/static/image/onepiece.jpg') no-repeat center;
+    background-size: contain;
+    width: 400px; 
+    height: 400px;; 
 }
 .main{
     display: flex;
@@ -38,7 +39,7 @@ body {
     border-radius: 12px;
     width: 160px;
     height: 48px;
-    margin-top: 52px;
+    margin-top: 80px;
 }
 .main_item{
     background-color:white ;
