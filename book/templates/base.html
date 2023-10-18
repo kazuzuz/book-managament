@@ -8,7 +8,10 @@
 
 <head>
 
-    <title>bookmanagement</title>
+    <title>
+
+    bookmanagement</title>
+
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
 
@@ -21,9 +24,10 @@
 
 <body>
     <header class ="header-section">
-        <div>
-                <div class="header-logo">LOGO</div>
-        </div>
+        {% comment %} <div>
+                <a herf="{%url '/'%}"
+                class="header-logo">LOGO</a>
+        </div>  {% endcomment %}
 
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}

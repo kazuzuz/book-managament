@@ -1,12 +1,17 @@
+{%extends 'base.html'%}
 {% load static %}
 
-<link rel="stylesheet" href="{% static 'book/style.css' %}">
 
+{%block css %}
+<link rel="stylesheet" href="{% static 'css/pages/login.css' %}">
+{%endblock%}
 
-<head>
-    <title>Login</title>
-</head>
-<body>
+{% block title%}
+ログイン画面
+{% endblock %}
+
+{%block content%}
+
     <h1>ログイン画面</h1>
 
     <form method="post" action="{% url 'authentication:login' %}">
@@ -24,5 +29,6 @@
     <p class="message">アカウントをお持ちですか？：
     <a href="{% url 'authentication:to_register' %}">アカウントを作成</a>
     </p>
-</body>
+
 </html>
+{%endblock%}

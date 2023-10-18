@@ -11,7 +11,14 @@ from django.contrib.auth.decorators import login_required
 def home(request):
     latest_review_list = Review.objects.filter(created_at__lte=timezone.now()).order_by("-created_at")[ :5]
     
-    return render(request, "home.html",{"latest_review_list": latest_review_list})
+    latest_book_list = Book.objects.all().order_by("-pub_date")[ :5]
+    
+    context ={
+        "latest_review_list" :latest_review_list,
+        "latest_book_list" : latest_book_list
+    }
+    
+    return render(request, "home.html",context)
 
 def detail(request, book_id):
     
