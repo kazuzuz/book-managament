@@ -4,23 +4,22 @@ from django.urls import reverse
 from authentication.models import Account
 from django.contrib.auth import authenticate, login, logout
 from .models import Account
+from .forms import RegisterForm
 
-#登録ページを表示するための関数
-def to_register_page(request):
-    return render(request, "register.html" )
 
 #登録ページからの情報を受け取り、保存する関数
 def register(request):
     if request.method == 'POST':
-        email = request.POST.get('email')
-        password = request.POST.get('password')
-        
-        user = Account.objects.create_user(email=email, password=password)
-        user.save()
-        
-        return HttpResponseRedirect(reverse("book:home"))
+        form = RegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request,user)
+            return HttpResponseRedirect(reverse("book:home"))
+        else:
+            print(form.errors)
+    form = RegisterForm()
     
-    return render(request, reverse("authentication:register"))        
+    return render(request, "register.html", {"form":form})        
 
 #ログイン処理を行う関数
 def login_page(request):
