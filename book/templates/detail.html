@@ -8,58 +8,60 @@
 
 {% block content%}
 <body>
-    <div class="main">
-        <div class="main_item">
-            <div class="imgframe"></div>
-        </div>
+        <div class="main">
+            <div class="main_item">
+                <div class="imgframe"></div>
+            </div>
 
-        <div class="main_item">
-            <br>
-            <h1>{{book.title}}</h1>
-            <br>
-            <h3>{{book.author}}</h3>
-            <br>
-            <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
-                {% csrf_token %}
-                <input type="submit", class="btn2", value="お気に入りに追加">
-            </form>
-        </div>
-    </div>
-    {% for review in book.review_set.all %}
-    <div class ="flexbox">
-        
-        <div class ="dotted-border">
-            <div class ="flex_item">
-                <li>投稿日 : {{review.pub_date}}</li>
+            <div class="main_item">
                 <br>
-                <li>評価 : {{review.score}}</li>
+                <h1>{{book.title}}</h1>
                 <br>
-                <li>レビュー : {{review.review_text}}</li>
+                <h3>{{book.author}}</h3>
+                <br>
+                <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
+                    {% csrf_token %}
+                    <input type="submit", class="btn2", value="お気に入りに追加">
+                </form>
             </div>
         </div>
-    </div>
-    {%endfor%}
-    
-</body>
-<p>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+        {% for review in book.review_set.all %}
+        <div class ="flexbox">
+            
+            <div class ="dotted-border">
+                <div class ="flex_item">
+                    <li>投稿日 : {{review.pub_date}}</li>
+                    <br>
+                    <li>評価 : {{review.score}}</li>
+                    <br>
+                    <li>レビュー : {{review.review_text}}</li>
+                </div>
+            </div>
+        </div>
+        {%endfor%}
+        
 
-{% for key, errors in form.errors.items %}
-    {% for error in errors %}
-        <p><strong>{{ error }}</strong></p>
-    {% endfor %}
-{% endfor %} 
+    <p>
+        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-<form action="{% url 'book:make_review' book.id %}" method="post">
-    {% csrf_token %}
-    <input type = "text" name ="review_text" placeholder="レビュー内容" ><br><br>
-    <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
-    <input type="submit" value="投稿">
-</form>
+    {% for key, errors in form.errors.items %}
+        {% for error in errors %}
+            <p><strong>{{ error }}</strong></p>
+        {% endfor %}
+    {% endfor %} 
 
-<p>
-    <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
+    <form action="{% url 'book:make_review' book.id %}" method="post">
         {% csrf_token %}
-        <input type="submit" value="お気に入り解除">
+        <label for="review_text">レビュー内容:</label><br>
+        <textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください"></textarea><br><br>
+        <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
+        <input type="submit" value="投稿">
     </form>
+
+    <p>
+        <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
+            {% csrf_token %}
+            <input type="submit" value="お気に入り解除">
+        </form>
+</body>
 {% endblock %}

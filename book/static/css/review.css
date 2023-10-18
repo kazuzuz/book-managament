@@ -12,6 +12,8 @@ body {
     background-color: white;
     padding: 12px;
     justify-content: center;
+    display: flex;
+
 }
 .flex_item{
     padding: 12px;
