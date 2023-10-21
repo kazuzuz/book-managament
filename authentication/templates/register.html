@@ -1,8 +1,12 @@
 {%extends "base.html" %}
 {% load static %}
 
+{% block title%}
+ユーザー登録
+{% endblock %}
+
 {%block css%}
-<link rel="stylesheet" href="{% static 'book/style.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 {%endblock%}
 
 {%block content%}
@@ -13,13 +17,3 @@
 </form>
 {% endblock%}
 
-
-
-
-
-    {% comment %} <form action="{% url 'authentication:register' %}" method="post">
-        {% csrf_token %}
-        <input type = "text" name ="email" placeholder="メールアドレス" ><br><br>
-        <input type="password" name="password" placeholder="パスワード"><br><br>
-        <input type="submit" value="登録"> {% endcomment %}
-    

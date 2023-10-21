@@ -7,10 +7,10 @@
 
 
 <head>
-
     <title>
-
-    bookmanagement</title>
+    {% block title %}
+    {% endblock %}
+    </title>
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
@@ -24,10 +24,10 @@
 
 <body>
     <header class ="header-section">
-        {% comment %} <div>
-                <a href="{%url '/'%}"
+        <div>
+                <a href="{% url 'book:home'%}"
                 class="header-logo">LOGO</a>
-        </div>  {% endcomment %}
+        </div> 
 
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}

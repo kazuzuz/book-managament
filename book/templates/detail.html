@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% block title%}
+{{book.title}}
+{%endblock%}
+
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/review.css' %}">
+<link rel="stylesheet" href="{% static 'css/pages/detail.css' %}">
 {% endblock%}
 
 
 {% block content%}
-<body>
         <div class="main">
             <div class="main_item">
                 <div class="imgframe"></div>
@@ -19,15 +22,26 @@
                 <br>
                 <h3>{{book.author}}</h3>
                 <br>
-                <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
-                    {% csrf_token %}
-                    <input type="submit", class="btn2", value="お気に入りに追加">
-                </form>
+                {% if user.is_authenticated %}
+                    {% if book in favorite_book_list %}
+                        <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
+                            {% csrf_token %}
+                            <input type="submit", class="btn2" value="お気に入り解除">
+                        </form>
+                    {% else %}
+                        <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
+                            {% csrf_token %}
+                            
+                            <input type="submit", class="btn2", value="お気に入りに追加">
+                        </form>
+                    {% endif %}
+                {% endif%}
             </div>
         </div>
+        <h2>{{book.title}}のレビュー</h2>
         {% for review in book.review_set.all %}
         <div class ="flexbox">
-            
+
             <div class ="dotted-border">
                 <div class ="flex_item">
                     <li>投稿日 : {{review.pub_date}}</li>
@@ -39,6 +53,9 @@
             </div>
         </div>
         {%endfor%}
+        {% if not book.review_set.all %}
+            <h3>レビューはまだ投稿されていません。</h3>
+        {% endif %}
         
 
     <p>
@@ -49,19 +66,17 @@
             <p><strong>{{ error }}</strong></p>
         {% endfor %}
     {% endfor %} 
+        <a href="{% url 'book:review' book.id %}" class="btn">レビューを書く</a>
 
-    <form action="{% url 'book:make_review' book.id %}" method="post">
+    {% comment %} <form action="{% url 'book:review' book.id %}" method="post">
         {% csrf_token %}
         <label for="review_text">レビュー内容:</label><br>
         <textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください"></textarea><br><br>
         <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
         <input type="submit" value="投稿">
-    </form>
+    </form> {% endcomment %}
 
     <p>
-        <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
-            {% csrf_token %}
-            <input type="submit" value="お気に入り解除">
-        </form>
-</body>
+        
+
 {% endblock %}

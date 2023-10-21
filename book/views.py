@@ -21,33 +21,37 @@ def home(request):
     return render(request, "home.html",context)
 
 def detail(request, book_id):
-    
+    user = request.user
     book = get_object_or_404(Book, pk=book_id)
+    if user.is_authenticated:
+        favorite_book_list = user.book_set.all()
+    else:
+        favorite_book_list = []
     
-    return render(request, "detail.html",{"book": book})
+    context ={
+        "book": book,
+        "favorite_book_list": favorite_book_list
+    }
+    return render(request, "detail.html", context)
 
-
-def make_review(request, book_id):
+@login_required
+def review(request, book_id):
     form = ReviewForm(request.POST)
-    try:
-        book = get_object_or_404(Book, pk=book_id)
-        if form.is_valid():
-            review_text = form.cleaned_data['review_text']
-            score = form.cleaned_data['score']
-            review = Review(book=book, review_text=review_text, score=score)
-            review.save()
-        else:
-            return render(request, "detail.html",{
-            "book":book, "form": form
-        })
+    book = get_object_or_404(Book, pk=book_id)
+    if request.method == "POST":
+            if form.is_valid():
+                review_text = form.cleaned_data['review_text']
+                score = form.cleaned_data['score']
+                review = Review(book=book, review_text=review_text, score=score)
+                review.save()
+                return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
+            else:
+                return render(request, "detail.html",{
+                "book":book, "form": form
+            })
             
 
-
-    except:
-        return render(request, "detail.html",{
-            "book":book, "error_message": "正しく入力されていない項目があります。" 
-        })
-    return HttpResponseRedirect(reverse("book:home"))
+    return render(request, "review.html", {"book":book} )
 
 
 

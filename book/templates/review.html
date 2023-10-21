@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title%}
+レビュー作成ページ
+{%endblock%}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pages/review.css' %}">
+{% endblock%}
+
+{% block content%}
+<h1>{{book.title}}<h1>
+<h3>レビューの内容を入力してください。</h3>
+<form action="{% url 'book:review' book.id %}" method="post">
+    {% csrf_token %}
+<div class="center-table">
+    <table border="1" class="table">
+        <tr>
+        <td class="table_item">作品の評価</td><td><input type="number" name="score" min="0" max="5" placeholder="点数"></td>
+        </tr>
+        <tr>
+        <td class="table_item">レビューのタイトル</td><td></td>
+        </tr>
+        <tr>
+            <td class="table_item">レビューの内容</td><td class="table_item2"><textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください" class="custom-textarea"></textarea>
+            </td>
+        </tr>
+    </table>
+</div>
+
+    <input type="submit" value="投稿" class="btn2">
+</form>
+{% endblock %}

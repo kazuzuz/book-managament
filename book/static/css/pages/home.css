@@ -1,0 +1,65 @@
+body {
+    text-align: center;
+}
+.flexbox{
+    display: flex;
+    background-color: white;
+    padding: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.flex_item{
+    width: auto;
+    height: auto;
+    padding: 12px;
+    background-color: white;
+    border-radius: 8px;
+    margin: 8px;
+}
+.card{
+    width: 250px;
+    height: 400px;
+    padding: 24px;
+    padding-right: 54px;
+    padding-left: 54px;
+}
+.card__imgframe{
+    width: 100%;
+    height: 80%;
+    padding-top: 56.25%;
+    background: url('/static/image/onepiece.jpg') no-repeat center;
+    background-size: contain;
+    box-sizing: border-box;
+    border-top: 2px solid black;
+    border-left: 2px solid black;
+    border-right: 2px solid black;
+}
+.card__textbox{
+    width: 100%;
+    height: 22%;
+    padding: 20px 18px;
+    background: #ffffff;
+    box-sizing: border-box;
+    border-right: 2px solid black;
+    border-bottom: 2px solid black;
+    border-left: 2px solid black;
+ 
+}
+.card__textbox > * + *{
+    margin-top: 10px;
+}
+.card__titletext{
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 125%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.card__overviewtext{
+    font-size: 16px;
+    line-height: 150%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
