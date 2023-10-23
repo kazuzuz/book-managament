@@ -38,13 +38,18 @@
                 {% endif%}
             </div>
         </div>
-        <h2>{{book.title}}のレビュー</h2>
+        <div class="yokonarabe">
+            <h2>{{book.title}}のレビュー</h2>      
+            <a href="{% url 'book:review' book.id %}" class="btn3">レビューを書く</a>
+        </div>
         {% for review in book.review_set.all %}
         <div class ="flexbox">
 
             <div class ="dotted-border">
                 <div class ="flex_item">
-                    <li>投稿日 : {{review.pub_date}}</li>
+                    <li>投稿者 : {{review.reviewer}}</li>
+                    <br>
+                    <li>投稿日 : {{review.created_at}}</li>
                     <br>
                     <li>評価 : {{review.score}}</li>
                     <br>
@@ -66,7 +71,7 @@
             <p><strong>{{ error }}</strong></p>
         {% endfor %}
     {% endfor %} 
-        <a href="{% url 'book:review' book.id %}" class="btn">レビューを書く</a>
+
 
     {% comment %} <form action="{% url 'book:review' book.id %}" method="post">
         {% csrf_token %}

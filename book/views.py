@@ -42,7 +42,8 @@ def review(request, book_id):
             if form.is_valid():
                 review_text = form.cleaned_data['review_text']
                 score = form.cleaned_data['score']
-                review = Review(book=book, review_text=review_text, score=score)
+                reviewer = request.user
+                review = Review(book=book, review_text=review_text, score=score, reviewer=reviewer)
                 review.save()
                 return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
             else:

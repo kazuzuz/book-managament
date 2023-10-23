@@ -35,6 +35,7 @@ body {
     background-color: white;
     color:#191d01;
     text-decoration: none;
+    border: 2px solid #191d01;
     font-size: 16px;
     font-weight: bold;
     padding: 12px;
@@ -42,10 +43,34 @@ body {
     width: 160px;
     height: 48px;
     margin-top: 80px;
+
+}
+.btn3 {
+    background-color: white;
+    color:#191d01;
+    text-decoration: none;
+    border: 2px solid #191d01;
+    font-size: 16px;
+    font-weight: bold;
+    padding: 12px;
+    border-radius: 12px;
+    width: 160px;
+    height: 48px;
+    margin: 8px 8px 8px 100px;
+    box-sizing: border-box;
+    display: inline-block;
+
 }
 .main_item{
     background-color:white ;
     padding: 40px;
 }
+.yokonarabe{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
   
