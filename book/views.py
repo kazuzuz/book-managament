@@ -38,13 +38,19 @@ def detail(request, book_id):
 def review(request, book_id):
     form = ReviewForm(request.POST)
     book = get_object_or_404(Book, pk=book_id)
+    
     if request.method == "POST":
             if form.is_valid():
                 review_text = form.cleaned_data['review_text']
                 score = form.cleaned_data['score']
                 reviewer = request.user
-                review = Review(book=book, review_text=review_text, score=score, reviewer=reviewer)
-                review.save()
+                review, created = Review.objects.update_or_create(
+                    reviewer = reviewer,
+                    
+                    defaults={
+                        'book': book,'review_text': review_text,'score': score,'reviewer': reviewer
+                    }
+                )
                 return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
             else:
                 return render(request, "detail.html",{

@@ -6,5 +6,6 @@ from authentication.models import Account
 class RegisterForm(forms.ModelForm):
     class Meta:
         model = Account
-        fields = ("email" ,"password",)
+        fields = [ 'email', 'password']
+
     

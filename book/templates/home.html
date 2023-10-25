@@ -15,7 +15,9 @@ bookmanagement
     <h1>bookmanagementへ  ようこそ！</h1>
 
     <section>
-     <h2> 最近出版された書籍</h2>
+    <div class="line-with-text">
+        <div class="line"></div><h2 class="text">最近出版された書籍</h2><div class="line"></div>
+    </div>
      <div class="flexbox">
         {% for book in latest_book_list%}
         <div class="flex_item">
@@ -35,7 +37,9 @@ bookmanagement
 
 
     {% if latest_review_list %}
-        <h2>最近レビューが追加された作品</h2>
+    <div class="line-with-text">
+        <div class="line"></div><h2 class="text">最近レビューが追加された作品</h2><div class="line"></div>
+    </div>
         <div class="flexbox">
             {% for review in latest_review_list %}
             <div class="flex_item">
