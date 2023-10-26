@@ -5,19 +5,24 @@ from django.contrib.auth import get_user_model
 
 Account = get_user_model()
 
+
+class Author(models.Model):
+    name = models.CharField(max_length= 256)
+    def __str__(self):
+        return f"{self.name}"
+    
+    
 # TODO 紐付け方を考える
 class Book(models.Model):
     pub_date = models.DateField("出版日", null=True, blank=True)
     title = models.CharField(max_length=256)
-    # TODO Author テーブルに紐付ける
-    author = models.CharField(max_length=256)
-    
+    author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(upload_to='images/', null=True)
     favorite_by = models.ManyToManyField(Account, null=True, blank=True)
     def __str__(self):
         return f"[{self.author}] {self.title}"
     
         
-
 class Review(models.Model):
     created_at = models.DateTimeField("レビュー日", default=timezone.now)
     book = models.ForeignKey(Book, on_delete=models.CASCADE) 
@@ -29,6 +34,8 @@ class Review(models.Model):
     )
     def __str__(self):
         return f"「{self.book.title}」のレビュー"
+    
+    
     
 
     
