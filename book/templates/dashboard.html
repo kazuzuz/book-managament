@@ -15,11 +15,12 @@ bookmanagement
     <h1 class = "h1">{{user.email}}さん  ようこそ！</h1>
     {% if favorite_book_list %}
         <h2>お気に入り登録した作品</h2>
+        
         <div class="flexbox">
             {% for book in favorite_book_list %}
             <div class="flex_item">
              <div class="card">
-                 <div class="card__imgframe"></div>
+                 <div class="card__imgframe" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
                  <div class="card__textbox">
                         <div class="card__titletext">
                                 作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>

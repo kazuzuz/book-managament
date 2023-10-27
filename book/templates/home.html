@@ -22,15 +22,15 @@ bookmanagement
         {% for book in latest_book_list%}
         <div class="flex_item">
             <div class="card">
-                    <div class="card__imgframe">
-                        <img src="{{ book.image.url }}" alt="No Image" class="card__img">
-                    </div>
-                        <div class="card__titletext">
-                            作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
-                        </div>
-                            <div class="card__overviewtext">著者 : {{book.author}}</div>
-            </div>
-        </div>
+                <div class="card__imgframe" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
+                <div class="card__textbox">
+                       <div class="card__titletext">
+                               作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
+                       </div>
+                               <div class="card__overviewtext">著者 : {{book.author}}</div>
+                 </div>
+             </div>
+           </div>  
         {% endfor %}
 
     </section>    
@@ -44,15 +44,15 @@ bookmanagement
             {% for review in latest_review_list %}
             <div class="flex_item">
                 <div class="card">
-                        <div class="card__imgframe">
-                            <img src="{{ review.book.image.url }}" alt="No Image" class="card__img">
-                        </div>
-                            <div class="card__titletext">
-                                作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br>
-                            </div>
-                                <div class="card__overviewtext">著者 : {{review.book.author}}</div>
-                </div>
-            </div>
+                    <div class="card__imgframe" style="background: url({{review.book.image.url}}) no-repeat center; background-size: contain;"></div>
+                    <div class="card__textbox">
+                           <div class="card__titletext">
+                                   作品 : <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title }}</a><br>
+                           </div>
+                                   <div class="card__overviewtext">著者 : {{review.book.author}}</div>
+                     </div>
+                 </div>
+               </div>  
             {% endfor %}
 
     {% endif %}
