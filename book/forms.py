@@ -1,5 +1,8 @@
 from django import forms
 
+#ModelForm
+#form.review_textでインプットを表示させる
+
 class ReviewForm(forms.Form):
     review_text = forms.CharField(max_length=256)
     score = forms.IntegerField(max_value=5)

@@ -14,12 +14,12 @@
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/header.css' %}">
+    <link rel="stylesheet" href="{% static 'css/modal.css' %}">
 
     {% block css %}
     {% endblock %}
 
-    {% block js %}
-    {% endblock %}   
+
 </head>
 
 <body>
@@ -32,12 +32,12 @@
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}
             <div class="navigation-container">
-                <a href="{% url 'book:dashboard' %}" class="btn">ダッシュボード</a>
+                <a href="{% url 'book:dashboard' %}" class="btn btn--primary">ダッシュボード</a>
             </div>
         {% else %}
             <div class="navigation-container">
-                <a href="{% url 'authentication:login' %}" class="btn">ログイン</a>
-                <a href="{% url 'authentication:register'%}" class="btn">ユーザー登録</a>
+                <a href="{% url 'authentication:login' %}" class="btn btn--primary">ログイン</a>
+                <a href="{% url 'authentication:register'%}" class="btn ">ユーザー登録</a>
             </div>
         {% endif %}
         
@@ -46,6 +46,8 @@
     {% block content%}
     {% endblock%}
     
+    {% block js %}
+    {% endblock %}   
 </body>
 
 </html>

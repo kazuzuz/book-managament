@@ -17,8 +17,8 @@ class Book(models.Model):
     pub_date = models.DateField("出版日", null=True, blank=True)
     title = models.CharField(max_length=256)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
-    image = models.ImageField(upload_to='images/', null=True)
-    favorite_by = models.ManyToManyField(Account, null=True, blank=True)
+    image = models.ImageField(upload_to='images/book', null=True)
+    favorite_by = models.ManyToManyField(Account, blank=True)
     def __str__(self):
         return f"[{self.author}] {self.title}"
     
@@ -34,6 +34,9 @@ class Review(models.Model):
     )
     def __str__(self):
         return f"「{self.book.title}」のレビュー"
+    
+    class Meta:
+        unique_together = ('book','reviewer')
     
     
     

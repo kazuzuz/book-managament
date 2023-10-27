@@ -11,26 +11,26 @@
 {% endblock %}
 
 {%block content%}
-    <div class="main">
-        <div class="main-element">
-            <h1>ログイン画面</h1><br><br>
+    <main>
+        <div class="login-form">
+            <h1 class="login-form_title">ログイン画面</h1>
 
-            <form method="post" action="{% url 'authentication:login' %}">
+            <form method="post" action="{% url 'authentication:login' %}" class="">
                 {% csrf_token %}
                 
-                <label for="userid">ユーザーID:</label>
+                <label for="userid" class="login-form__label">メールアドレス:</label>
                 <input type="text" name="userid"><br><br>
                 <label for="password">パスワード：</label>
                 <input type="password" name="password"><br><br>
                 
 
-                <input type="submit" value="Login" class="btn2">
+                <input type="submit" value="Login" class="btn btn--info">
             </form>
             
             <p class="message">アカウントをお持ちですか？：
             <a href="{% url 'authentication:register' %}">アカウントを作成</a>
             </p>
         </div>
-    </div>
+    </main>
 </html>
 {%endblock%}

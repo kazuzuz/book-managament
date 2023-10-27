@@ -22,6 +22,7 @@ class AccountManager(BaseUserManager):
     
     
 class Account(AbstractBaseUser, PermissionsMixin):
+    username = models.CharField(max_length=50,unique=True, null=True, blank=True)
     email = models.EmailField(max_length=256, unique=True)
     is_staff = models.BooleanField(default=False)
     #追加したいフィールドがある場合はここに追加する

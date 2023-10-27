@@ -9,6 +9,10 @@
 <link rel="stylesheet" href="{% static 'css/pages/detail.css' %}">
 {% endblock%}
 
+{%block js%}
+<script src="{% static 'js/pages/book/detail.js'%}"></script>
+{% endblock%}
+
 
 {% block content%}
         <div class="main">
@@ -40,14 +44,16 @@
         </div>
         <div class="yokonarabe">
             <h2>{{book.title}}のレビュー</h2>      
-            <a href="{% url 'book:review' book.id %}" class="btn3">レビューを書く</a>
+            {% comment %} <a href="{% url 'book:review' book.id %}" class="btn3">レビューを書く</a> {% endcomment %}
+            <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
+
         </div>
         {% for review in book.review_set.all %}
         <div class ="flexbox">
 
             <div class ="dotted-border">
                 <div class ="flex_item">
-                    <li>投稿者 : {{review.reviewer}}</li>
+                    <li>投稿者 : {{review.reviewer.username}}</li>
                     <br>
                     <li>投稿日 : {{review.created_at}}</li>
                     <br>
@@ -83,5 +89,11 @@
 
     <p>
         
+    <div class="modal-background" id="modal" style="display: none;">
+        <div class="modal-content">
+            <div>modal</div>
+            <button type="button" id="closeModalBtn">閉じる</button>
+        </div>
+    </div>
 
 {% endblock %}
