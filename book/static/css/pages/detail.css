@@ -56,9 +56,9 @@ body {
     border-radius: 12px;
     width: 160px;
     height: 48px;
-    margin: 8px 8px 8px 100px;
     box-sizing: border-box;
     display: inline-block;
+    margin: 8px;
 
 }
 .main_item{
@@ -66,11 +66,37 @@ body {
     padding: 40px;
 }
 .yokonarabe{
+    width: 48%;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-between;
+    margin: 0 auto;
 }
+.table{
+    text-align: center;
+    border:"1";
+}
+.table_item{
+    padding: 28px;
+    background-color: #4caf4fa8 ;
+}
+.table_item2{
+    padding: 4px;
+}
+.custom-textarea {
+    border: 1px solid #ccc;
+    padding: 16px;
+}
+.center-table {
+    display: flex;
+    justify-content: center;
 
-
+}
+.modal-content{
+    width: 80%;
+    max-width: 600px;
+    overflow: auto; 
+    max-height: 80vh;
+}
 
   

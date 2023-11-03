@@ -44,7 +44,6 @@
         </div>
         <div class="yokonarabe">
             <h2>{{book.title}}のレビュー</h2>      
-            {% comment %} <a href="{% url 'book:review' book.id %}" class="btn3">レビューを書く</a> {% endcomment %}
             <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
 
         </div>
@@ -78,21 +77,30 @@
         {% endfor %}
     {% endfor %} 
 
-
-    {% comment %} <form action="{% url 'book:review' book.id %}" method="post">
-        {% csrf_token %}
-        <label for="review_text">レビュー内容:</label><br>
-        <textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください"></textarea><br><br>
-        <input type="number" name="score" min="0" max="5" placeholder="点数"><br><br>
-        <input type="submit" value="投稿">
-    </form> {% endcomment %}
-
-    <p>
         
     <div class="modal-background" id="modal" style="display: none;">
         <div class="modal-content">
-            <div>modal</div>
-            <button type="button" id="closeModalBtn">閉じる</button>
+            <h1>{{book.title}}<h1>
+                <h3>レビューの内容を入力してください。</h3>
+                <form action="{% url 'book:review' book.id %}" method="post">
+                    {% csrf_token %}
+                <div class="center-table">
+                    <table border="1" class="table">
+                        <tr>
+                        <td class="table_item">作品の評価</td><td><input type="number" name="score" min="0" max="5" placeholder="点数"></td>
+                        </tr>
+                        <tr>
+                        <td class="table_item">レビューのタイトル</td><td></td>
+                        </tr>
+                        <tr>
+                            <td class="table_item">レビューの内容</td><td class="table_item2"><textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください" class="custom-textarea"></textarea>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                
+                    <input type="submit" value="投稿" class="btn3" id="closeModalBtn">
+                </form>
         </div>
     </div>
 
