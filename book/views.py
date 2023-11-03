@@ -25,12 +25,19 @@ def detail(request, book_id):
     book = get_object_or_404(Book, pk=book_id)
     if user.is_authenticated:
         favorite_book_list = user.book_set.all()
+        try:
+            review = Review.objects.get(book=book, reviewer=user)
+            initial_values = {"score" : review.score, "review_text": review.review_text}
+        except:
+            initial_values = {"score" : None, "review_text": None}
     else:
         favorite_book_list = []
+    form = ReviewForm(initial=initial_values)
     
     context ={
         "book": book,
-        "favorite_book_list": favorite_book_list
+        "favorite_book_list": favorite_book_list,
+        "form": form
     }
     return render(request, "detail.html", context)
 

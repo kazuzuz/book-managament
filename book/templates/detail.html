@@ -17,12 +17,12 @@
 {% block content%}
         <div class="main">
             <div class="main_item">
-                <div class="imgframe"></div>
+                <div class="img" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
             </div>
 
             <div class="main_item">
                 <br>
-                <h1>{{book.title}}</h1>
+                <div class="book-title">{{book.title}}</div>
                 <br>
                 <h3>{{book.author}}</h3>
                 <br>
@@ -43,7 +43,7 @@
             </div>
         </div>
         <div class="yokonarabe">
-            <h2>{{book.title}}のレビュー</h2>      
+            <h3><div class="book-title">{{book.title}}</div>のレビュー</h3>      
             <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
 
         </div>
@@ -71,30 +71,29 @@
     <p>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
 
-    {% for key, errors in form.errors.items %}
+    {% comment %} {% for key, errors in form.errors.items %}
         {% for error in errors %}
             <p><strong>{{ error }}</strong></p>
         {% endfor %}
-    {% endfor %} 
+    {% endfor %} {% endcomment %}
 
         
     <div class="modal-background" id="modal" style="display: none;">
         <div class="modal-content">
-            <h1>{{book.title}}<h1>
+            <h1>{{book.title}}<h1><button id="closeModalBtn" class="close-modal">&times;</button>
                 <h3>レビューの内容を入力してください。</h3>
                 <form action="{% url 'book:review' book.id %}" method="post">
                     {% csrf_token %}
                 <div class="center-table">
                     <table border="1" class="table">
                         <tr>
-                        <td class="table_item">作品の評価</td><td><input type="number" name="score" min="0" max="5" placeholder="点数"></td>
+                        <td class="table_item">作品の評価</td><td>{{form.score}}</td>
                         </tr>
                         <tr>
                         <td class="table_item">レビューのタイトル</td><td></td>
                         </tr>
                         <tr>
-                            <td class="table_item">レビューの内容</td><td class="table_item2"><textarea name="review_text" id="review_text" rows="10" cols="50" placeholder="ここにレビュー内容を入力してください" class="custom-textarea"></textarea>
-                            </td>
+                        <td class="table_item">レビューの内容</td><td class="table_item2">{{form.review_text}}</td>
                         </tr>
                     </table>
                 </div>

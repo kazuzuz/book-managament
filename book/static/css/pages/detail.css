@@ -20,11 +20,10 @@ body {
     background-color: white;
     margin: 8px;
 }
-.imgframe{
-    background: url('/static/image/onepiece.jpg') no-repeat center;
-    background-size: contain;
-    width: 400px; 
-    height: 400px;; 
+.img{
+    width: 400px;
+    height: 400px;
+    object-fit: cover; 
 }
 .main{
     display: flex;
@@ -98,5 +97,22 @@ body {
     overflow: auto; 
     max-height: 80vh;
 }
-
+.close-modal {
+    position: absolute;             
+    top: 4px;
+    right: 22px;
+    font-size: 40px;
+    color: rgba(255, 0, 0, 0.705);
+    cursor: pointer;
+    border: none;
+    background: none;
+  }
+.book-title{
+    width: 350px;
+    font-size: 32px;
+    line-height: 150%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
   

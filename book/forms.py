@@ -4,7 +4,10 @@ from django import forms
 #form.review_textでインプットを表示させる
 
 class ReviewForm(forms.Form):
-    review_text = forms.CharField(max_length=256)
+    review_text = forms.CharField(max_length=256,
+                                  widget=forms.Textarea(attrs={'rows': 10,
+                                                               'cols': 50, 
+                                                               'class': 'custom-textarea'}))
     score = forms.IntegerField(max_value=5)
     
     def clean_review_text(self):
