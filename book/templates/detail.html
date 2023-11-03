@@ -30,7 +30,7 @@
                     {% if book in favorite_book_list %}
                         <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
                             {% csrf_token %}
-                            <input type="submit", class="btn2" value="お気に入り解除">
+                            <input type="submit", class="btn2" value="お気に入り解除" onClick="return Check()">
                         </form>
                     {% else %}
                         <form action="{% url 'book:add_favorite' book.id %}" mathod="post">

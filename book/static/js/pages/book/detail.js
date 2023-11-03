@@ -12,3 +12,12 @@ closeModalBtn.addEventListener("click", function()
 {
     modal.style.display = "none";
 })
+
+function Check(){
+    var checked = confirm("本当にお気に入り解除してよろしいですか？");
+    if (checked == true) {
+        return true;
+    } else {
+        return false;
+    }
+}
