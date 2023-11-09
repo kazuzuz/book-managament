@@ -12,8 +12,32 @@ main {
     text-align: center;
 }
 .login-form_title{
-    margin-bottom: 24px;
+    font-size: 30px;
+    font-weight: 1000;
+    margin: 16px;
 }
 .login-form__label{
+    padding-top: 12px;
+    align-self: start;
     font-weight: 700;
+}
+.login-form_inputbox{
+    width: 300px;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+.login-form_area{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.login-form_inputarea{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

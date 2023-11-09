@@ -4,7 +4,8 @@ from django.urls import reverse
 from authentication.models import Account
 from django.contrib.auth import authenticate, login, logout
 from .models import Account
-from .forms import RegisterForm
+from .forms import RegisterForm, LoginForm
+from django.contrib.auth.views import LoginView
 
 
 #登録ページからの情報を受け取り、保存する関数
@@ -22,33 +23,14 @@ def register(request):
     return render(request, "register.html", {"form":form})        
 
 #ログイン処理を行う関数
-def login_page(request):
-    # POST
-    if request.method == 'POST':
-        # フォーム入力のユーザーID・パスワード取得
-        ID = request.POST.get('userid')
-        Pass = request.POST.get('password')
+# def login_page(request):
+#     form = LoginForm
+#     return render(request, 'login.html', {"form":form})
 
-        # Djangoの認証機能
-        user = authenticate(email=ID, password=Pass)
-
-        # ユーザー認証
-        if user:
-            #ユーザーアクティベート判定
-            if user.is_active:
-                # ログイン
-                login(request,user)
-                # ホームページ遷移
-                return HttpResponseRedirect(reverse('book:dashboard'))
-            else:
-                # アカウント利用不可
-                return HttpResponse("アカウントが有効ではありません")
-        # ユーザー認証失敗
-        else:
-            return HttpResponse("ログインIDまたはパスワードが間違っています")
-    # GET
-    else:
-        return render(request, 'login.html')
+class Login(LoginView):
+    form_class = LoginForm
+    template_name = 'login.html'
+    
 
 #ログアウトするための関数    
 

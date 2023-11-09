@@ -21,7 +21,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
-    'book.apps.BookConfig'
+    'book.apps.BookConfig',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
@@ -100,7 +101,7 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-LOGIN_REDIRECT_URL = '/book:dashboard/'
+LOGIN_REDIRECT_URL = '/dashboard/'
 
 LOGIN_URL = '/login/'
 

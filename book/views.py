@@ -31,6 +31,7 @@ def detail(request, book_id):
         except:
             initial_values = {"score" : None, "review_text": None}
     else:
+        initial_values = {"score" : None, "review_text": None}
         favorite_book_list = []
     form = ReviewForm(initial=initial_values)
     
