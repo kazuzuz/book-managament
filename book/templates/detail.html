@@ -15,37 +15,38 @@
 
 
 {% block content%}
-        <div class="main">
-            <div class="main_item">
-                <div class="img" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
-            </div>
-
-            <div class="main_item">
-                <br>
-                <div class="book-title">{{book.title}}</div>
-                <br>
-                <h3>{{book.author}}</h3>
-                <br>
-                {% if user.is_authenticated %}
-                    {% if book in favorite_book_list %}
-                        <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
-                            {% csrf_token %}
-                            <input type="submit", class="btn2" value="お気に入り解除" onClick="return Check()">
-                        </form>
-                    {% else %}
-                        <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
-                            {% csrf_token %}
-                            
-                            <input type="submit", class="btn2", value="お気に入りに追加">
-                        </form>
-                    {% endif %}
-                {% endif%}
+        <div class="detail-form_book">
+                <div class="detail-form_img" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
+                
+                <div class="detail-form_book_imfo">
+                    <div class="detail-form_book_title">{{book.title}}</div>
+                    <div class="detail-form_book_author">{{book.author}}</div>
+                    <div class="detail-form_book_review-info"> 
+                        <div>レビュー{{review_num}}件</div>
+                        <div>評価{{score_ave}}</div>
+                
+                    </div>
+                        
+                    {% if user.is_authenticated %}
+                        {% if book in favorite_book_list %}
+                            <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
+                                {% csrf_token %}
+                                <input type="submit", class="btn2" value="お気に入り解除" onClick="return Check()">
+                            </form>
+                        {% else %}
+                            <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
+                                {% csrf_token %}
+                                
+                                <input type="submit", class="btn2", value="お気に入りに追加">
+                            </form>
+                        {% endif %}
+                    {% endif%}
+                </div>
             </div>
         </div>
         <div class="yokonarabe">
             <h3><div class="book-title">{{book.title}}</div>のレビュー</h3>      
             <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
-
         </div>
         {% for review in book.review_set.all %}
         <div class ="flexbox">

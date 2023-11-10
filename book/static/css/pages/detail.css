@@ -20,12 +20,12 @@ body {
     background-color: white;
     margin: 8px;
 }
-.img{
+.detail-form_img{
     width: 400px;
     height: 400px;
     object-fit: cover; 
 }
-.main{
+.detail-form_book{
     display: flex;
     justify-content: center;
     padding: 12px;
@@ -59,10 +59,6 @@ body {
     display: inline-block;
     margin: 8px;
 
-}
-.main_item{
-    background-color:white ;
-    padding: 40px;
 }
 .yokonarabe{
     width: 48%;
@@ -107,12 +103,26 @@ body {
     border: none;
     background: none;
   }
-.book-title{
+.detail-form_book_title{
     width: 350px;
     font-size: 32px;
     line-height: 150%;
+    font-weight: 700;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
 }
-  
+.detail-form_book_author{
+    font-size: 24px;
+    font-weight: 300;
+}
+.detail-form_book_imfo{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+}
+.detail-form_book_review-info{
+    display: flex;
+    flex-direction: column;
+}

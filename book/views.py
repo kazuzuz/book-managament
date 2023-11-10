@@ -6,6 +6,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Avg
 
 
 def home(request):
@@ -23,6 +24,12 @@ def home(request):
 def detail(request, book_id):
     user = request.user
     book = get_object_or_404(Book, pk=book_id)
+    review_num = Review.objects.filter(book=book).count()
+    reviews = Review.objects.filter(book=book)
+    if reviews.exists():
+        score_ave = reviews.aggregate(avg_score=Avg('score'))['avg_score']
+    else:
+        score_ave = "--"
     if user.is_authenticated:
         favorite_book_list = user.book_set.all()
         try:
@@ -38,6 +45,8 @@ def detail(request, book_id):
     context ={
         "book": book,
         "favorite_book_list": favorite_book_list,
+        "review_num": review_num,
+        "score_ave": score_ave,
         "form": form
     }
     return render(request, "detail.html", context)
