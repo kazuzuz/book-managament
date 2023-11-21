@@ -1,11 +1,13 @@
 .dotted-border {
     border-top: 1px dotted #000;
-    width: 80%;
 }
-body {
-    text-align: center;
+.dotted-border--50{
+    width: 50%;
 }
-.flexbox{
+.dotted-border--100{
+    width: 100%;
+}
+.detail-review-form_review{
     width: 100%;
     margin-right: auto;
     margin-left: auto;
@@ -28,6 +30,8 @@ body {
 .detail-form_book{
     display: flex;
     justify-content: center;
+    flex-direction: column;
+    align-items: center;
     padding: 12px;
 }
 .btn2 {
@@ -111,6 +115,8 @@ body {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    display: flex;
+    justify-content: center;
 }
 .detail-form_book_author{
     font-size: 24px;
@@ -125,4 +131,39 @@ body {
 .detail-form_book_review-info{
     display: flex;
     flex-direction: column;
+}
+.detail-review-form{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.detal-review-form_review{
+    display: flex;
+    flex-direction: column;
+}
+.detail-review-form_username{
+    font-size: 20px;
+}
+.detail-review-form_1st_row{
+    display: flex;
+    align-items: center;
+
+}
+.detail-review-form_icon{
+    font-size: 24px;
+}
+.detail-review-form_score{
+    font-size: 18px;
+}
+.detail-review-form_date{
+    font-size: 14px;
+    color: #7e7777; 
+}
+.detail-review-form_content{
+    font-size: 14px;
+}
+.detail-form_book_area{
+    display: flex;
+    justify-content: space-between;
 }

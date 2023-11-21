@@ -16,6 +16,7 @@
 
 {% block content%}
         <div class="detail-form_book">
+            <div class="detail-form_book_area">
                 <div class="detail-form_img" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
                 
                 <div class="detail-form_book_imfo">
@@ -24,8 +25,8 @@
                     <div class="detail-form_book_review-info"> 
                         <div>レビュー{{review_num}}件</div>
                         <div>評価{{score_ave}}</div>
-                
                     </div>
+            
                         
                     {% if user.is_authenticated %}
                         {% if book in favorite_book_list %}
@@ -43,31 +44,32 @@
                     {% endif%}
                 </div>
             </div>
-        </div>
-        <div class="yokonarabe">
-            <h3><div class="book-title">{{book.title}}</div>のレビュー</h3>      
-            <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
-        </div>
-        {% for review in book.review_set.all %}
-        <div class ="flexbox">
-
-            <div class ="dotted-border">
-                <div class ="flex_item">
-                    <li>投稿者 : {{review.reviewer.username}}</li>
-                    <br>
-                    <li>投稿日 : {{review.created_at}}</li>
-                    <br>
-                    <li>評価 : {{review.score}}</li>
-                    <br>
-                    <li>レビュー : {{review.review_text}}</li>
-                </div>
+            <div class="yokonarabe">
+                <h3><div class="book-title">{{book.title}}</div>のレビュー</h3>      
+                <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
             </div>
-        </div>
-        {%endfor%}
-        {% if not book.review_set.all %}
-            <h3>レビューはまだ投稿されていません。</h3>
-        {% endif %}
-        
+            <div class="dotted-border dotted-border--50"></div>
+            <div class="detail-review-form">
+                {% for review in book.review_set.all %}
+                <div class ="detal-review-form_review">
+                    <div class="detail-review-form_1st_row">
+                        <div class="detail-review-form_icon">^_^</div>
+                        <div class="detail-review-form_username">{{review.reviewer.username}}</div>
+                    </div>
+                    <div class="detail-review-form_1st_row">
+                        <div class="detail-review-form_score">評価 : {{review.score}}</div>
+                        <div class="detail-review-form_title"></div>
+                    </div>
+                    <div class="detail-review-form_date">{{ review.created_at|date:"Y/m/d H:i" }}</div>
+                    <div class="detail-review-form_content">{{review.review_text}}</div>    
+                </div>
+                <div class="dotted-border dotted-border--100"></div>
+                {%endfor%}
+                {% if not book.review_set.all %}
+                    <h3>レビューはまだ投稿されていません。</h3>
+                {% endif %}
+            </div>
+        </div>   
 
     <p>
         {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
