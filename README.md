@@ -1,24 +1,7 @@
+# アプリ概要
 
+書籍管理アプリ。
 
-django-admin startproject config .
+##　機能一覧
 
-##　DB コマンド
-
-python manage.py makemigrations
-
-python manage.py migrate
-
-## 起動
-python manage.py runserver
-
-## Git
-
-git add .
-
-git commit -m "message"
-
-git push
-
-git remote add origin https://github.com/kazuzuz/book-managament.git
-git branch -M main
-git push -u origin main
+## 利用技術
