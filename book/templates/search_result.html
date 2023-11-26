@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+bookmanagement_serach
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pages/search_result.css' %}">
+{% endblock%}
+
+
+{% block content%}
+{{search_word}}の検索結果：{{result_books}}
+{% endblock %}

@@ -35,7 +35,7 @@
             <div class="navigation-container">
                 <form action="{% url 'book:search' %}" class="search-form-005">
                     <label>
-                        <input type="text" placeholder="キーワードを入力">
+                        <input type="text"  name="search_word" placeholder="キーワードを入力">
                     </label>
                     <button type="submit" aria-label="検索"></button>
                 </form>
@@ -43,6 +43,12 @@
             </div>
         {% else %}
             <div class="navigation-container">
+                <form action="{% url 'book:search' %}" class="search-form-005">
+                    <label>
+                        <input type="text"  name="search_word" placeholder="キーワードを入力">
+                    </label>
+                    <button type="submit" aria-label="検索"></button>
+                </form>
                 <a href="{% url 'authentication:login' %}" class="btn btn--primary">ログイン</a>
                 <a href="{% url 'authentication:register'%}" class="btn ">ユーザー登録</a>
             </div>
