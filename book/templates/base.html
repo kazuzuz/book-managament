@@ -29,9 +29,16 @@
                 class="header-logo">LOGO</a>
         </div> 
 
+
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}
             <div class="navigation-container">
+                <form action="#" class="search-form-005">
+                    <label>
+                        <input type="text" placeholder="キーワードを入力">
+                    </label>
+                    <button type="submit" aria-label="検索"></button>
+                </form>
                 <a href="{% url 'book:dashboard' %}" class="btn btn--primary">ダッシュボード</a>
             </div>
         {% else %}

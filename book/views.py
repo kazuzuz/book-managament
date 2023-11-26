@@ -102,3 +102,6 @@ def dashboard(request):
     favorite_book_list = user.book_set.all()
     
     return render(request, "dashboard.html",{"favorite_book_list": favorite_book_list})
+
+def search(request):
+    pass
