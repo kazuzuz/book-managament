@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+bookmanagement_serach
+{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/pages/search_result.css' %}">
+{% endblock%}
+
+
+{% block content%}
+{% if books%}
+    {% for book in books %}
+    {{search_word}}の検索結果：{{book.title}}
+    {% endfor %}
+{% else%}
+ <p>検索結果なし</p>
+{% endif %}
+
+<div>
+{% if books.has_previoud%}
+<a href="?page={{books.previous_page_number}}&search_word={{search_word}}">前へ</a>
+{% endif %}
+{% if books.has_next%}
+<a href="?page={{books.next_page_number}}&search_word={{search_word}}">次へ</a>
+{% endif %}
+</div>
+
+{% endblock %}

@@ -103,9 +103,3 @@ def dashboard(request):
     
     return render(request, "dashboard.html",{"favorite_book_list": favorite_book_list})
 
-def search(request):
-    search_word = request.GET.get('search_word')
-    result_books = Book.objects.filter(title = search_word)
-    context = {'search_word': search_word, 'result_books': result_books }
-    
-    return render(request, "search_result.html", context)

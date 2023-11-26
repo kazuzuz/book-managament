@@ -33,7 +33,7 @@
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}
             <div class="navigation-container">
-                <form action="{% url 'book:search' %}" class="search-form-005">
+                <form action="{% url 'search' %}" class="search-form-005">
                     <label>
                         <input type="text"  name="search_word" placeholder="キーワードを入力">
                     </label>
@@ -43,7 +43,7 @@
             </div>
         {% else %}
             <div class="navigation-container">
-                <form action="{% url 'book:search' %}" class="search-form-005">
+                <form action="{% url 'search' %}" class="search-form-005">
                     <label>
                         <input type="text"  name="search_word" placeholder="キーワードを入力">
                     </label>
