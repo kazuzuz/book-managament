@@ -15,7 +15,7 @@ def search(request):
     books = Book.objects.filter(title__icontains=search_word)
     
     #pagenation
-    limit = 1
+    limit = 2
     paginator = Paginator(books, limit)
     page_number = request.GET.get('page', 1)
     result = paginator.get_page(page_number)
@@ -26,8 +26,6 @@ def search(request):
     
     return render(request, "search_result.html", context)
     
+
     
-    # result_books = Book.objects.filter(title = search_word)
-    # context = {'search_word': search_word, 'result_books': result_books }
     
-    # return render(request, "search_result.html", context)

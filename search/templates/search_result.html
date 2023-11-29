@@ -11,21 +11,30 @@ bookmanagement_serach
 
 
 {% block content%}
-{% if books%}
-    {% for book in books %}
-    {{search_word}}の検索結果：{{book.title}}
-    {% endfor %}
-{% else%}
- <p>検索結果なし</p>
-{% endif %}
 
-<div>
-{% if books.has_previoud%}
-<a href="?page={{books.previous_page_number}}&search_word={{search_word}}">前へ</a>
-{% endif %}
-{% if books.has_next%}
-<a href="?page={{books.next_page_number}}&search_word={{search_word}}">次へ</a>
-{% endif %}
+<div class="search-form">
+    <div class="search-form_area">
+        <div class="search-form_subtitle">"{{search_word}}"の検索結果</div>
+        {% if books %}
+            {% for book in books %}
+                <div class="search-form_book">
+                    <div class="search-form_book_img" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
+                    <div class="search-form_book_info">
+                        <a href="{%url 'book:detail' book.id %}" class="search-form_book_info_title">{{book.title}}</a>
+                        <div class="search-form_book_info_author">著者：{{book.author}}</div>
+                    </div>
+                </div>
+            {% endfor %}
+        {% endif %}
+        <div>
+        {% if books.has_previous%}
+        <a href="?page={{books.previous_page_number}}&search_word={{search_word}}">前へ</a>
+        {% endif %}
+        {% if books.has_next%}
+        <a href="?page={{books.next_page_number}}&search_word={{search_word}}">次へ</a>
+        {% endif %}
+        </div>
+    </div>
 </div>
 
 {% endblock %}
