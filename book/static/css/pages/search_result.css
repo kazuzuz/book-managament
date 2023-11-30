@@ -13,11 +13,15 @@
     margin-bottom: 1rem;
 }
 .search-form_book{
+    margin : 12px;
     width: 100%;
     height: 20rem;
     display: flex;
 }
 .search-form_book_img{
+    margin: auto;
+    padding: auto;
+    height: 90%;
     width: 30%;
 }
 .search-form_book_info{
@@ -36,4 +40,12 @@
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 1rem;
+}
+.search-form_paging{
+    display: flex;
+    justify-content: space-around;
+}
+.active{
+    background-color: #42bfa0;
+    color:azure;
 }

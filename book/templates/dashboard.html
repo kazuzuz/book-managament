@@ -20,7 +20,7 @@ bookmanagement
             {% for book in favorite_book_list %}
             <div class="flex_item">
              <div class="card">
-                 <div class="card__imgframe" style="background: url({{book.image.url}}) no-repeat center; background-size: contain;"></div>
+                 <div class="card__imgframe" style="background: url({% if book.image %}{{ book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
                  <div class="card__textbox">
                         <div class="card__titletext">
                                 作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>

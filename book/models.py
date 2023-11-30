@@ -17,7 +17,7 @@ class Book(models.Model):
     pub_date = models.DateField("出版日", null=True, blank=True)
     title = models.CharField(max_length=256)
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
-    image = models.ImageField(upload_to='images/book', null=True)
+    image = models.ImageField(upload_to='images/book', null=True, blank=True)
     favorite_by = models.ManyToManyField(Account, blank=True)
     def __str__(self):
         return f"[{self.author}] {self.title}"
