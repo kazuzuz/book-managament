@@ -17,6 +17,7 @@ body {
     margin: 8px;
 }
 .card{
+    background-color: white;
     width: 250px;
     height: 400px;
     padding: 24px;
@@ -59,6 +60,7 @@ body {
 .line-with-text {
     display: flex;
     align-items: center;
+    background-color: white;
 }
 .line {
     flex-grow: 1;

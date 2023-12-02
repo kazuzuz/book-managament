@@ -11,6 +11,11 @@ class Author(models.Model):
     def __str__(self):
         return f"{self.name}"
     
+class Tag(models.Model):
+    name = models.CharField(max_length= 256)
+    def __str__(self):
+        return f"{self.name}"
+    
     
 # TODO 紐付け方を考える
 class Book(models.Model):
@@ -19,6 +24,7 @@ class Book(models.Model):
     author = models.ForeignKey(Author, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to='images/book', null=True, blank=True)
     favorite_by = models.ManyToManyField(Account, blank=True)
+    tag = models.ManyToManyField(Tag, blank=True)
     def __str__(self):
         return f"[{self.author}] {self.title}"
     
@@ -28,6 +34,7 @@ class Review(models.Model):
     book = models.ForeignKey(Book, on_delete=models.CASCADE) 
     review_text = models.CharField(max_length=256, blank=True)
     score = models.IntegerField(default=0)
+    review_title = models.CharField(max_length=256, blank=True)
     
     reviewer = models.ForeignKey(
         Account, on_delete=models.CASCADE, null=True, blank=True

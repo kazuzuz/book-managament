@@ -8,7 +8,9 @@ class ReviewForm(forms.Form):
                                   widget=forms.Textarea(attrs={'rows': 10,
                                                                'cols': 50, 
                                                                'class': 'custom-textarea'}))
-    score = forms.IntegerField(max_value=5)
+    score = forms.IntegerField(max_value=5, min_value=0)
+    
+    review_title = forms.CharField(max_length=256)
     
     def clean_review_text(self):
         review_text = self.cleaned_data.get("review_text")

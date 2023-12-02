@@ -33,9 +33,15 @@
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}
             <div class="navigation-container">
+                <form action="{% url 'author_search' %}" class="search-form-005">
+                    <label>
+                        <input type="text"  name="search_word" placeholder="著者名を入力">
+                    </label>
+                    <button type="submit" aria-label="検索"></button>
+                </form>
                 <form action="{% url 'search' %}" class="search-form-005">
                     <label>
-                        <input type="text"  name="search_word" placeholder="キーワードを入力">
+                        <input type="text"  name="search_word" placeholder="作品名を入力">
                     </label>
                     <button type="submit" aria-label="検索"></button>
                 </form>
@@ -43,6 +49,12 @@
             </div>
         {% else %}
             <div class="navigation-container">
+                <form action="{% url 'author_search' %}" class="search-form-005">
+                    <label>
+                        <input type="text"  name="search_word" placeholder="著者名を入力">
+                    </label>
+                    <button type="submit" aria-label="検索"></button>
+                </form>
                 <form action="{% url 'search' %}" class="search-form-005">
                     <label>
                         <input type="text"  name="search_word" placeholder="キーワードを入力">

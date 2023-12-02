@@ -34,13 +34,14 @@ def detail(request, book_id):
         favorite_book_list = user.book_set.all()
         try:
             review = Review.objects.get(book=book, reviewer=user)
-            initial_values = {"score" : review.score, "review_text": review.review_text}
+            initial_values = {"score" : review.score, "review_text": review.review_text, "review_title": review.review_title}
         except:
-            initial_values = {"score" : None, "review_text": None}
+            initial_values = {"score" : None, "review_text": None, "review_title": None}
     else:
-        initial_values = {"score" : None, "review_text": None}
+        initial_values = {"score" : None, "review_text": None, "review_title": None}
         favorite_book_list = []
     form = ReviewForm(initial=initial_values)
+    
     
     context ={
         "book": book,
@@ -60,12 +61,13 @@ def review(request, book_id):
             if form.is_valid():
                 review_text = form.cleaned_data['review_text']
                 score = form.cleaned_data['score']
+                review_title = form.cleaned_data['review_title']
                 reviewer = request.user
                 review, created = Review.objects.update_or_create(
                     reviewer = reviewer,
                     
                     defaults={
-                        'book': book,'review_text': review_text,'score': score,'reviewer': reviewer
+                        'book': book,'review_text': review_text,'score': score,'reviewer': reviewer,'review_title': review_title
                     }
                 )
                 return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
