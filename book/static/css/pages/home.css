@@ -1,9 +1,12 @@
 body {
     text-align: center;
 }
+h1 {
+    background-color: #e4f0f1;
+}
 .flexbox{
     display: flex;
-    background-color: white;
+    background-color: #e4f0f1;
     padding: 12px;
     justify-content: center;
     flex-wrap: wrap;
@@ -12,13 +15,12 @@ body {
     width: auto;
     height: auto;
     padding: 12px;
-    background-color: white ;
+    background-color: #e4f0f1 ;
     border-radius: 8px;
     margin: 8px;
 }
 .card{
     border-radius: 10px;
-    border: 2px solid #ccc;
     background-color: white;
     width: 250px;
     height: 400px;
@@ -63,7 +65,7 @@ body {
 .line-with-text {
     display: flex;
     align-items: center;
-    background-color: white;
+    background-color: #e4f0f1;
 }
 .line {
     flex-grow: 1;
@@ -146,8 +148,8 @@ body {
     text-decoration: none;
 }
 .home_new-review{
+    background-color: white;
     border-radius: 10px;
-    border: 2px solid #ccc;
     width: 60%;
     display: flex;
     justify-content: left;
@@ -163,6 +165,7 @@ body {
     height: 150px;
 }
 .home_new-review-area{
+    background-color: #e4f0f1;
     display: flex;
     flex-direction: column;
     justify-content: center;
