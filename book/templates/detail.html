@@ -20,7 +20,7 @@
                 <div class="detail-form_img" style="background: url({% if book.image %}{{ book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
                 
                 <div class="detail-form_book_imfo">
-                    <div class="detail-form_book_title">{{book.title}}</div>
+                    <div class="detail-form_book_title">{{book.title|truncatechars:10}}</div>
                     <div class="detail-form_book_author">{{book.author}}</div>
                     <div class="detail-form_book_review-info"> 
                         <div>レビュー{{review_num}}件</div>
@@ -50,7 +50,7 @@
                 </div>
             </div>
             <div class="yokonarabe">
-                <h3><div class="book-title">{{book.title}}</div>のレビュー</h3>      
+                <h3><div class="book-title">{{book.title|truncatechars:10}}</div>のレビュー</h3>      
                 <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
             </div>
             <div class="dotted-border dotted-border--50"></div>
