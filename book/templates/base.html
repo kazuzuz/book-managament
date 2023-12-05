@@ -28,21 +28,23 @@
                 <a href="{% url 'book:home'%}"
                 class="header-logo">LOGO</a>
         </div> 
-
+        
 
         {% comment %} ログイン時はダッシュボードへ {% endcomment %}
         {% if user.is_authenticated %}
             <div class="navigation-container">
-                <form action="{% url 'author_search' %}" class="search-form-005">
-                    <label>
-                        <input type="text"  name="search_word" placeholder="著者名を入力">
-                    </label>
-                    <button type="submit" aria-label="検索"></button>
-                </form>
                 <form action="{% url 'search' %}" class="search-form-005">
+                    <select name="search_type" class="search-select">
+                        <option value="title">作品</option>
+                        <option value="author">著者</option>
+                        
+                    </select>
+
                     <label>
-                        <input type="text"  name="search_word" placeholder="作品名を入力">
+                        <input type="text"  name="search_word" placeholder="キーワードを入力">
                     </label>
+
+                    
                     <button type="submit" aria-label="検索"></button>
                 </form>
                 <a href="{% url 'book:dashboard' %}" class="btn btn--primary">ダッシュボード</a>
@@ -70,7 +72,7 @@
 
     {% block content%}
     {% endblock%}
-    
+
     {% block js %}
     {% endblock %}   
 </body>

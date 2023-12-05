@@ -36,6 +36,19 @@
     font-size: 1em;
     outline: none;
 }
+.search-select{
+    width: 100px;
+    height: 45px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 3px 0 0 3px;
+    box-sizing: border-box;
+    background-color: #e6edf3;
+    font-size: 1em;
+    outline: none;
+
+
+}
 
 .search-form-005 input::placeholder {
     color: #767d83;

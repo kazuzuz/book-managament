@@ -8,6 +8,9 @@ from .forms import ReviewForm
 from django.contrib.auth.decorators import login_required
 from django.db.models import Avg
 
+from rest_framework.views import APIView
+from rest_framework.response import Response
+
 
 def home(request):
     latest_review_list = Review.objects.filter(created_at__lte=timezone.now()).order_by("-created_at")[ :5]
@@ -65,6 +68,7 @@ def review(request, book_id):
                 reviewer = request.user
                 review, created = Review.objects.update_or_create(
                     reviewer = reviewer,
+                    book = book,
                     
                     defaults={
                         'book': book,'review_text': review_text,'score': score,'reviewer': reviewer,'review_title': review_title
@@ -80,22 +84,24 @@ def review(request, book_id):
     return render(request, "review.html", {"book":book} )
 
 
+class AddFavoriteView(APIView):
+    def post(self, request, book_id):
+            book = get_object_or_404(Book, pk=book_id)
+            account = request.user
+            book.favorite_by.add(account)
+            book.save()
+            
+            return Response(status=200)
+        
+class DeleteFavoriteView(APIView):
+    def post(self, request, book_id):
+            book = get_object_or_404(Book, pk=book_id)
+            account = request.user
+            book.favorite_by.remove(account)
+            book.save()
+            
+            return Response(status=200)
 
-#お気に入り登録するための関数
-def add_favorite(request, book_id):
-    book = get_object_or_404(Book, pk=book_id)
-    account = request.user
-    book.favorite_by.add(account)
-    book.save()
-    return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
-
-#お気に入り解除するための関数
-def delete_favorite(request, book_id):
-    book = get_object_or_404(Book, pk=book_id)
-    account = request.user
-    book.favorite_by.remove(account)
-    
-    return HttpResponseRedirect(reverse("book:detail", args=[book_id]))
 
 #ログイン後に表示するdashboardページ
 @login_required(login_url="/login/")

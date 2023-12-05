@@ -1,49 +1,14 @@
-{% extends 'base.html' %}
+{% extends 'search_base.html'%}
 {% load static %}
 
 {% block title %}
 bookmanagement_serach
 {% endblock %}
 
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/pages/search_result.css' %}">
+{% block content %}
+{{ block.super }}
 {% endblock%}
 
-
-{% block content%}
-
-<div class="search-form">
-    <div class="search-form_area">
-        <div class="search-form_subtitle">"{{search_word}}"を含む作品</div>
-        {% if books %}
-            {% for book in books %}
-                <div class="search-form_book">
-                    <div class="search-form_book_img" style="background: url({% if book.image %}{{ book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
-                    <div class="search-form_book_info">
-                        <a href="{%url 'book:detail' book.id %}" class="search-form_book_info_title">{{book.title}}</a>
-                        <div class="search-form_book_info_author">著者：{{book.author}}</div>
-                    </div>
-                </div>
-            {% endfor %}
-        {% endif %}
-    <div class="search-form_paging">
-        {% if books.has_previous%}
-        <a href="?page={{books.previous_page_number}}&search_word={{search_word}}">前へ</a>
-        {% endif %}
-
-        {% for pages_num in pages_num_list %}
-            {% if pages_num == books.number %}
-                <a href="?page={{pages_num}}&search_word={{search_word}}" class="active">{{pages_num}}</a>
-            {% else %}
-                <a href="?page={{pages_num}}&search_word={{search_word}}">{{pages_num}}</a>
-            {% endif %}
-        {% endfor %}
-        
-        {% if books.has_next%}
-        <a href="?page={{books.next_page_number}}&search_word={{search_word}}">次へ</a>
-        {% endif %}
-    </div>
-    </div>
-</div>
-
-{% endblock %}
+{%block mozi%}
+    <div class="search-form_subtitle">"{{search_word}}"を含む作品</div>
+{%endblock%}

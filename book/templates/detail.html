@@ -34,18 +34,8 @@
             
                         
                     {% if user.is_authenticated %}
-                        {% if book in favorite_book_list %}
-                            <form action="{% url 'book:delete_favorite' book.id %}" mathod="post">
-                                {% csrf_token %}
-                                <input type="submit", class="btn2" value="お気に入り解除" onClick="return Check()">
-                            </form>
-                        {% else %}
-                            <form action="{% url 'book:add_favorite' book.id %}" mathod="post">
-                                {% csrf_token %}
-                                
-                                <input type="submit", class="btn2", value="お気に入りに追加">
-                            </form>
-                        {% endif %}
+                       <button id="favorite-delete-btn" type="button" class="btn2 hidden" data-book-id="{{book.id}}" >お気に入り解除</button>
+                       <button id="favorite-add-btn" type="button" class="btn2" data-book-id="{{book.id}}">お気に入り登録</button>
                     {% endif%}
                 </div>
             </div>

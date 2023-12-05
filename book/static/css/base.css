@@ -2,7 +2,9 @@
     margin: 0;
     padding: 0;
 }
-
+.hidden {
+    display: none;
+}
 .btn{
     text-decoration: none;
     padding: 12px;

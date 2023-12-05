@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'authentication.apps.AuthenticationConfig',
     'widget_tweaks',
-    
+    'rest_framework',
     'book.apps.BookConfig',
     'search',
 ]
