@@ -19,7 +19,7 @@ RUN ["pip3", "install", "--no-cache-dir", "-r", "/bookmanagement/requirements.tx
 RUN pip freeze
 
 #PC上のsrcファイルをWORKDIR内にコピー
-COPY src ./src
+COPY . . 
 
 #コンテナのポート8000を公開
 EXPOSE 5000
