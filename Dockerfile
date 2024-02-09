@@ -25,4 +25,4 @@ COPY . .
 EXPOSE 5000
 
 #dockerコンテナ起動時に実行するコマンド
-CMD ["python", "bookmanagement.py"]
+CMD ["/manage.py", "runserver", "0.0.0.0:8000"]
