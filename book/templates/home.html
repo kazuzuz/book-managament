@@ -6,12 +6,12 @@ bookmanagement
 {% endblock %}
 
 {% block css %}
-<link rel="stylesheet" href="{% static 'css/pages/home.css' %}">
+{% comment %} <link rel="stylesheet" href="{% static 'css/pages/home.css' %}"> {% endcomment %}
 {% endblock%}
 
 
 {% block content%}
-
+    <body class="container">
     <h1>bookmanagementへ  ようこそ！</h1>
 
     <section>
@@ -20,17 +20,14 @@ bookmanagement
     </div>
      <div class="flexbox">
         {% for book in latest_book_list%}
-        <div class="flex_item">
-            <div class="card">
-                <div class="card__imgframe" style="background: url({% if book.image %}{{ book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
-                <div class="card__textbox">
-                       <div class="card__titletext">
-                               作品 : <a href="{% url 'book:detail' book.id %}">{{ book.title }}</a><br>
-                       </div>
-                               <div class="card__overviewtext">著者 : {{book.author}}</div>
-                 </div>
-             </div>
-           </div>  
+        <div class="card" style="width: 18rem;">
+            <img src="{{ book.image.url }}" class="card-img-top" alt="No image">
+            <div class="card-body"> 
+                <h5 class="card-title">{{ book.title }}</h5>  
+                <p class="card-text">{{ book.author }}</p>
+                <a href="{% url 'book:detail' book.id %}" class="btn btn-primary">詳細を見る</a> 
+            </div>    
+        </div>  
         {% endfor %}
 
     </section>    
@@ -69,5 +66,5 @@ bookmanagement
         </div>
 
     {% endif %}
-
+    </body>
 {% endblock%}

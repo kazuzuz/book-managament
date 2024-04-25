@@ -1,187 +1,185 @@
 body {
-    text-align: center;
+  text-align: center;
 }
 h1 {
-    background-color: #e4f0f1;
+  background-color: #e4f0f1;
 }
-.flexbox{
-    display: flex;
-    background-color: #e4f0f1;
-    padding: 12px;
-    justify-content: center;
-    flex-wrap: wrap;
+.flexbox {
+  display: flex;
+  background-color: #f4f8fa;
+  padding: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
-.flex_item{
-    width: auto;
-    height: auto;
-    padding: 12px;
-    background-color: #e4f0f1 ;
-    border-radius: 8px;
-    margin: 8px;
+.flex_item {
+  width: auto;
+  height: auto;
+  padding: 12px;
+  background-color: #e4f0f1;
+  border-radius: 8px;
+  margin: 8px;
 }
-.card{
-    border-radius: 10px;
-    background-color: white;
-    width: 250px;
-    height: 400px;
-    padding: 24px;
-    padding-right: 54px;
-    padding-left: 54px;
+.card {
+  border-radius: 10px;
+  background-color: white;
+  width: 250px;
+  height: 400px;
+  padding: 24px;
+  padding-right: 54px;
+  padding-left: 54px;
 }
-.card__imgframe{
-    width: 100%;
-    height: 80%;
-    padding-top: 56.25%;
-    box-sizing: border-box;
-
+.card__imgframe {
+  width: 100%;
+  height: 80%;
+  padding-top: 56.25%;
+  box-sizing: border-box;
 }
-.card__textbox{
-    width: 100%;
-    height: 22%;
-    padding: 20px 18px;
-    background: #ffffff;
-    box-sizing: border-box;
-
+.card__textbox {
+  width: 100%;
+  height: 22%;
+  padding: 20px 18px;
+  background: #ffffff;
+  box-sizing: border-box;
 }
-.card__textbox > * + *{
-    margin-top: 10px;
+.card__textbox > * + * {
+  margin-top: 10px;
 }
-.card__titletext{
-    font-size: 20px;
-    font-weight: bold;
-    line-height: 125%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-decoration: none;
+.card__titletext {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 125%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-decoration: none;
 }
-.card__overviewtext{
-    font-size: 16px;
-    line-height: 150%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.card__overviewtext {
+  font-size: 16px;
+  line-height: 150%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .line-with-text {
-    display: flex;
-    align-items: center;
-    background-color: #e4f0f1;
+  display: flex;
+  align-items: center;
+  background-color: #e4f0f1;
 }
 .line {
-    flex-grow: 1;
-    border-top: 1px dotted #000;
-    margin: 0 12px;
+  flex-grow: 1;
+  border-top: 1px dotted #000;
+  margin: 0 12px;
 }
-.text{
-    padding: 8px;
+.text {
+  padding: 8px;
 }
-.detail-form_book_review-info{
-    display: flex;
-    flex-direction: column;
+.detail-form_book_review-info {
+  display: flex;
+  flex-direction: column;
 }
-.detail-review-form{
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
+.detail-review-form {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
-.detal-review-form_review{
-    display: flex;
-    flex-direction: column;
-    width: 66%;
+.detal-review-form_review {
+  display: flex;
+  flex-direction: column;
+  width: 66%;
 }
-.detail-review-form_username{
-    font-size: 20px;
+.detail-review-form_username {
+  font-size: 20px;
 }
-.detail-review-form_1st_row{
-    display: flex;
-    align-items: center;
+.detail-review-form_1st_row {
+  display: flex;
+  align-items: center;
 }
-.detail-review-form_2nd_row{
-    display: flex;
-    align-items: center;
+.detail-review-form_2nd_row {
+  display: flex;
+  align-items: center;
 }
-.detail-review-form_icon{
-    font-size: 24px;
+.detail-review-form_icon {
+  font-size: 24px;
 }
-.detail-review-form_score{
-    font-size: 18px;
+.detail-review-form_score {
+  font-size: 18px;
 }
-.detail-review-form_date{
-    display: flex;
-    align-items: center;
-    font-size: 14px;
-    color: #7e7777; 
+.detail-review-form_date {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: #7e7777;
 }
-.detail-review-form_content{
-    display: flex;
-    align-items: center;
-    font-size: 14px;
+.detail-review-form_content {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
 }
-.detail-form_book_area{
-    display: flex;
-    justify-content: space-between;
+.detail-form_book_area {
+  display: flex;
+  justify-content: space-between;
 }
-.modal_btn-area{
-    display: flex;
-    justify-content: center;
+.modal_btn-area {
+  display: flex;
+  justify-content: center;
 }
-.detail-review-form_title{
-    font-size: 18px;
-    font-weight: 600;
-    padding-left: 24px;
+.detail-review-form_title {
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 24px;
 }
-.detail-form_book_tag-area{
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
+.detail-form_book_tag-area {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
 }
-.detail-form_book_tag{
-    font-size: 14px;
-    font-weight: 600;
-    padding: 4px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    margin: 4px;
-    background-color: #ccc;
-    color: #000;
-    text-decoration: none;
+.detail-form_book_tag {
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin: 4px;
+  background-color: #ccc;
+  color: #000;
+  text-decoration: none;
 }
-.home_new-review{
-    background-color: white;
-    border-radius: 10px;
-    width: 60%;
-    display: flex;
-    justify-content: left;
-    align-items: center;
-    padding: 16px;
-    margin: 12px;
+.home_new-review {
+  background-color: white;
+  border-radius: 10px;
+  width: 60%;
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  padding: 16px;
+  margin: 12px;
 }
-.home_new-review-book-img{
-    display: flex;
-    justify-content: center;
-    align-self: center;
-    width: 120px;
-    height: 150px;
+.home_new-review-book-img {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 120px;
+  height: 150px;
 }
-.home_new-review-area{
-    background-color: #e4f0f1;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.home_new-review-area {
+  background-color: #e4f0f1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-.home_new-review-book-info{
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 33%;
+.home_new-review-book-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 33%;
 }
-.home_new-review-book-title{
-    font-size: 18px;
-    font-weight: 600;
+.home_new-review-book-title {
+  font-size: 18px;
+  font-weight: 600;
 }
 a {
-    color: #1e2dff;
-    text-decoration: none;
+  color: #1e2dff;
+  text-decoration: none;
 }

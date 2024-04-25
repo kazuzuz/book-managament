@@ -1,28 +1,11 @@
-FROM python:3.8
+FROM python:3.9.11
 
-#シェルを指定
-SHELL ["/bin/bash", "-c"]
+ENV PYTHONUNBUFFERED 1
 
-#コンテナ内で使用するディレクトリを指定
-WORKDIR /bookmanagement
+RUN mkdir -p /root/workspace
+COPY requirements.txt /root/workspace/
+WORKDIR /root/workspace
 
-#ソフトウェアアップデート
-RUN ["apt-get", "update"]
-
-#PC上の「requirements.txt」を、WORKDIR上にコピー
-COPY requirements.txt ./
-
-#pipインストールの実行
-RUN ["pip3", "install", "--no-cache-dir", "-r", "/bookmanagement/requirements.txt"]
-
-#build中に確認できるように表示
-RUN pip freeze
-
-#PC上のsrcファイルをWORKDIR内にコピー
-COPY . . 
-
-#コンテナのポート8000を公開
-EXPOSE 5000
-
-#dockerコンテナ起動時に実行するコマンド
-CMD ["python", "manage.py", "runserver", "0.0.0.0:5000"]
+RUN pip install --upgrade pip\
+    && pip install --upgrade setuptools\
+    && pip install -r requirements.txt
