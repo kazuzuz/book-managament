@@ -15,13 +15,35 @@
 
 
 {% block content%}
+    <div class="container">
+        <div class ="row border-bottom border-info m-4">
+            <div class="col">
+                <h1>{{book.title}}</h1>
+                <h4>{{book.author}}</h4>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col">
+                <img src="{{ book.image.url }}" class="img-thumbnail" alt="No image">
+            </div>
+            <div class="col-7">
+                <h5>あらすじ</h5>
+                <p>犯人への過剰暴力が原因で左遷させられた熱血刑事の五代。新たな上司は自称“超能力捜査官”の飛高警視正。赴任早々、五代はとある連続殺人事件へと潜入捜査を命じられるのだが…!?</p>
+                <span class="d-flex flex-column mb-4 border border-secondary">
+                    <div class="p-2">ISBN: {{book.isbn}}</div>
+                    <div class="p-2">出版社: {{book.publisher}}</div>
+                    <div class="p-2">出版日: {{book.publication_date}}</div>
+                    <div class="p-2">ページ数: {{book.page}}</div>
+                </span>
+            </div>
+        </div>
+    </div>    
         <div class="detail-form_book">
             <div class="detail-form_book_area">
-                <div class="detail-form_img" style="background: url({% if book.image %}{{ book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
-                
+              
                 <div class="detail-form_book_imfo">
-                    <div class="detail-form_book_title">{{book.title|truncatechars:10}}</div>
-                    <div class="detail-form_book_author">{{book.author}}</div>
+                    
                     <div class="detail-form_book_review-info"> 
                         <div>レビュー{{review_num}}件</div>
                         <div>評価{{score_ave}}</div>
