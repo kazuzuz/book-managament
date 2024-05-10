@@ -7,3 +7,7 @@
 ## 利用技術
 
 仮想環境をアクティブにするには
+
+docker compose up
+
+docker exec -it コンテナ名 bash

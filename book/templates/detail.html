@@ -1,122 +1,176 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title%}
-{{book.title}}
-{%endblock%}
-
-{% block css %}
-<link rel="stylesheet" href="{% static 'css/pages/detail.css' %}">
-{% endblock%}
-
-{%block js%}
+{% extends 'base.html' %} {% load static %} {% block title%} {{book.title}}
+{%endblock%} {% block css %}
+<link rel="stylesheet" href="{% static 'css/pages/detail.css' %}" />
+{% endblock%} {%block js%}
 <script src="{% static 'js/pages/book/detail.js'%}"></script>
-{% endblock%}
-
-
-{% block content%}
-    <div class="container">
-        <div class ="row border-bottom border-info m-4">
-            <div class="col">
-                <h1>{{book.title}}</h1>
-                <h4>{{book.author}}</h4>
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col">
-                <img src="{{ book.image.url }}" class="img-thumbnail" alt="No image">
-            </div>
-            <div class="col-7">
-                <h5>あらすじ</h5>
-                <p>犯人への過剰暴力が原因で左遷させられた熱血刑事の五代。新たな上司は自称“超能力捜査官”の飛高警視正。赴任早々、五代はとある連続殺人事件へと潜入捜査を命じられるのだが…!?</p>
-                <span class="d-flex flex-column mb-4 border border-secondary">
-                    <div class="p-2">ISBN: {{book.isbn}}</div>
-                    <div class="p-2">出版社: {{book.publisher}}</div>
-                    <div class="p-2">出版日: {{book.publication_date}}</div>
-                    <div class="p-2">ページ数: {{book.page}}</div>
-                </span>
-            </div>
-        </div>
-    </div>    
-        <div class="detail-form_book">
-            <div class="detail-form_book_area">
-              
-                <div class="detail-form_book_imfo">
-                    
-                    <div class="detail-form_book_review-info"> 
-                        <div>レビュー{{review_num}}件</div>
-                        <div>評価{{score_ave}}</div>
-                    </div>
-                    <div class="detail-form_book_tag-area"> 
-                            {% for tag in book.tag.all %}
-                            <a href="{% url 'tag_search' %}?tag_name={{ tag.name }}" class="detail-form_book_tag">#{{ tag.name }}</a>
-                            {% endfor %}
-                    </div>
-            
-                        
-                    {% if user.is_authenticated %}
-                       <button id="favorite-delete-btn" type="button" class="btn2 hidden" data-book-id="{{book.id}}" >お気に入り解除</button>
-                       <button id="favorite-add-btn" type="button" class="btn2" data-book-id="{{book.id}}">お気に入り登録</button>
-                    {% endif%}
-                </div>
-            </div>
-            <div class="yokonarabe">
-                <h3><div class="book-title">{{book.title|truncatechars:10}}</div>のレビュー</h3>      
-                <button type="button" class="btn3" id="showModalBtn">レビューを書く</button>
-            </div>
-            <div class="dotted-border dotted-border--50"></div>
-            <div class="detail-review-form">
-                {% for review in book.review_set.all %}
-                <div class ="detal-review-form_review">
-                    <div class="detail-review-form_1st_row">
-                        <div class="detail-review-form_icon">^_^</div>
-                        <div class="detail-review-form_username">{{review.reviewer.username}}</div>
-                    </div>
-                    <div class="detail-review-form_2nd_row">
-                        <div class="detail-review-form_score">評価 : {{review.score}}</div>
-                        <div class="detail-review-form_title">{{review.review_title}}</div>
-                    </div>
-                    <div class="detail-review-form_date">{{ review.created_at|date:"Y/m/d H:i" }}</div>
-                    <div class="detail-review-form_content">{{review.review_text}}</div>    
-                </div>
-                <div class="dotted-border dotted-border--100"></div>
-                {%endfor%}
-                {% if not book.review_set.all %}
-                    <h3>レビューはまだ投稿されていません。</h3>
-                {% endif %}
-            </div>
-        </div>   
-
-    <p>
-        {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-
-
-        
-    <div class="modal-background" id="modal" style="display: none;">
-        <div class="modal-content">
-            <h1>{{book.title}}<h1><button id="closeModalBtn" class="close-modal">&times;</button>
-                <h3>レビューの内容を入力してください。</h3>
-                <form action="{% url 'book:review' book.id %}" method="post">
-                    {% csrf_token %}
-                <div class="center-table">
-                    <table border="1" class="table">
-                        <tr>
-                        <td class="table_item">作品の評価</td><td>{{form.score}}</td>
-                        </tr>
-                        <tr>
-                        <td class="table_item">レビューのタイトル</td><td>{{form.review_title}}</td>
-                        </tr>
-                        <tr>
-                        <td class="table_item">レビューの内容</td><td class="table_item2">{{form.review_text}}</td>
-                        </tr>
-                    </table>
-                </div>
-                <div class="modal_btn-area">
-                    <input type="submit" value="投稿" class="btn3" id="closeModalBtn">
-                </div>
-                </form>
-        </div>
+{% endblock%} {% block content%}
+<div class="container">
+  <div class="row border-bottom border-info m-4">
+    <div class="col">
+      <h1>{{book.title}}</h1>
+      <h4>{{book.author}}</h4>
     </div>
+  </div>
 
-{% endblock %}
+  <div class="row">
+    <div class="col">
+      <img src="{{ book.image.url }}" class="img-thumbnail" alt="No image" />
+    </div>
+    <div class="col-7">
+      <h5>あらすじ</h5>
+      <p>
+        犯人への過剰暴力が原因で左遷させられた熱血刑事の五代。新たな上司は自称“超能力捜査官”の飛高警視正。赴任早々、五代はとある連続殺人事件へと潜入捜査を命じられるのだが…!?
+      </p>
+      <span class="d-flex flex-column mb-4 border border-secondary">
+        <div class="p-2">ISBN: {{book.isbn}}</div>
+        <div class="p-2">出版社: {{book.publisher}}</div>
+        <div class="p-2">出版日: {{book.publication_date}}</div>
+        <div class="p-2">ページ数: {{book.page}}</div>
+      </span>
+      <div class="row">
+        <div class="col">
+          <div>レビュー{{review_num}}件</div>
+          <div>評価{{score_ave}}</div>
+        </div>
+        <div class="col">
+          {% if user.is_authenticated %}
+          <button
+            id="favorite-delete-btn"
+            type="button "
+            class="btn btn-info"
+            hidden
+            data-book-id="{{book.id}}"
+          >
+            ブックマーク
+          </button>
+          <button
+            id="favorite-add-btn"
+            type="button"
+            class="btn btn-outline-info"
+            data-book-id="{{book.id}}"
+            style="color: black"
+          >
+            ブックマーク登録
+          </button>
+          {% endif%}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% for tag in book.tag.all %}
+  <a
+    href="{% url 'tag_search' %}?tag_name={{ tag.name }}"
+    class="detail-form_book_tag"
+    >#{{ tag.name }}</a
+  >
+  {% endfor %}
+
+  <div class="detail-form_book">
+    <div class="detail-form_book_area">
+      <div class="detail-form_book_imfo">
+        <div class="detail-form_book_tag-area">
+          {% for tag in book.tag.all %}
+          <a
+            href="{% url 'tag_search' %}?tag_name={{ tag.name }}"
+            class="detail-form_book_tag"
+            >#{{ tag.name }}</a
+          >
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    <div class="yokonarabe">
+      <h3>
+        <div class="book-title"></div>
+        レビュー
+      </h3>
+      <button
+        type="button"
+        class="btn btn-secondary"
+        id="showModalBtn"
+        data-bs-toggle="modal"
+        data-bs-target="#modal"
+      >
+        レビューを書く
+      </button>
+    </div>
+    <div class="dotted-border dotted-border--50"></div>
+    <div class="detail-review-form">
+      {% for review in book.review_set.all %}
+      <div class="detal-review-form_review">
+        <div class="detail-review-form_1st_row">
+          <div class="detail-review-form_icon">
+            <i class="bi bi-person-circle"></i>　
+          </div>
+          <div class="detail-review-form_username">
+            {{review.reviewer.username}}
+          </div>
+        </div>
+        <div class="detail-review-form_2nd_row">
+          <div class="detail-review-form_score">評価 : {{review.score}}</div>
+          <div class="detail-review-form_title">{{review.review_title}}</div>
+        </div>
+        <div class="detail-review-form_date">
+          {{ review.created_at|date:"Y/m/d H:i" }}
+        </div>
+        <div class="detail-review-form_content">{{review.review_text}}</div>
+      </div>
+      <div class="dotted-border dotted-border--100"></div>
+      {%endfor%} {% if not book.review_set.all %}
+      <h3>レビューはまだ投稿されていません。</h3>
+      {% endif %}
+    </div>
+  </div>
+  <div
+    class="modal fade"
+    id="modal"
+    style="display: none"
+    tabindex="-1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">{{book.title}}</h5>
+          <button
+            id="closeModalBtn"
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Close"
+          ></button>
+        </div>
+        <div class="modal-body">
+          <h3>レビューの内容を入力してください。</h3>
+          <form action="{% url 'book:review' book.id %}" method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+              <label for="inputEmail3" class="form-label" for="score">
+                作品の評価
+              </label>
+              <div>{{form.score}}</div>
+            </div>
+            <div class="mb-3">
+              <label for="inputEmail3" class="form-label">
+                レビューのタイトル
+              </label>
+              <div>{{form.review_title}}</div>
+            </div>
+            <div class="mb-3">
+              <label for="inputEmail3" class="form-label">レビューの内容</label>
+              <div>{{form.review_text}}</div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="closeModalBtn">
+              投稿
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <p>{% if error_message %}</p>
+  <p><strong>{{ error_message }}</strong></p>
+  {% endif %} {% endblock %}
+</div>
