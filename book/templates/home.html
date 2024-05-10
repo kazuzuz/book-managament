@@ -35,32 +35,36 @@ bookmanagement
     <div class="line-with-text">
         <div class="line"></div><h2 class="text">最近追加されたレビュー</h2><div class="line"></div>
     </div>
-        <div class="home_new-review-area">
-            {% for review in latest_review_list %}
-                <div class="home_new-review">
-                    <div class="home_new-review-book-info">
-                        <div class="home_new-review-book-img" style="background: url({% if review.book.image %}{{ review.book.image.url }}{% else %}{{ '/media/images/noimage.jpg' }}{% endif %}) no-repeat center; background-size: contain;"></div>
-
-                        <div class="home_new-review-book-title">
-                            <a href="{% url 'book:detail' review.book.id %}">{{ review.book.title|truncatechars:10 }}</a>
-                        </div>
+        <div class="container text-center">
+            <div class="row">
+                {% for review in latest_review_list %}
+                <div class="col">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ review.book.image.url }}" class="card-img-top" alt="No image">
+                        <div class="card-body"> 
+                            <h5 class="card-title">{{ review.book.title }}</h5>  
+                            <p class="card-text">{{ review.book.author }}</p>
+                            <a href="{% url 'book:detail' review.book.id %}" class="btn btn-primary">詳細を見る</a> 
+                        </div>    
                     </div>
-                    <div class ="detal-review-form_review">
-                        <div class="detail-review-form_1st_row">
-                            <div class="detail-review-form_icon">^_^</div>
-                            <div class="detail-review-form_username">{{review.reviewer.username}}</div>
-                        </div>
-                        <div class="detail-review-form_2nd_row">
-                            <div class="detail-review-form_score">評価 : {{review.score}}</div>
-                            <div class="detail-review-form_title">{{review.review_title}}</div>
-                        </div>
-                        <div class="detail-review-form_date">{{ review.created_at|date:"Y/m/d H:i" }}</div>
-                        <div class="detail-review-form_content">{{review.review_text|truncatechars:100}}</div>    
-                    </div>
-                    <div class="dotted-border dotted-border--100"></div>
-
                 </div>
-            {% endfor %}
+                <div class="col-6">
+                        <div class ="detal-review-form_review">
+                            <div class="detail-review-form_1st_row">
+                                <div class="detail-review-form_icon">^_^</div>
+                                <div class="detail-review-form_username">{{review.reviewer.username}}</div>
+                            </div>
+                            <div class="detail-review-form_2nd_row">
+                                <div class="detail-review-form_score">評価 : {{review.score}}</div>
+                                <div class="detail-review-form_title">{{review.review_title}}</div>
+                            </div>
+                            <div class="detail-review-form_date">{{ review.created_at|date:"Y/m/d H:i" }}</div>
+                            <div class="detail-review-form_content">{{review.review_text|truncatechars:100}}</div>    
+                        </div>
+                        <div class="dotted-border dotted-border--100"></div>
+                </div>
+                
+                {% endfor %}
         </div>
 
     {% endif %}

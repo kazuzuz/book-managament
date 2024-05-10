@@ -5,12 +5,16 @@ from django import forms
 
 class ReviewForm(forms.Form):
     review_text = forms.CharField(max_length=256,
-                                  widget=forms.Textarea(attrs={'rows': 10,
-                                                               'cols': 50, 
-                                                               'class': 'custom-textarea'}))
-    score = forms.IntegerField(max_value=5, min_value=0)
+                                  widget=forms.Textarea(attrs={'rows': 5,
+                                                                
+                                                               'class': 'form-control',}))
+    score = forms.IntegerField(min_value=0, max_value=5, help_text='0～5の範囲で評価してください', widget=forms.NumberInput(attrs={'placeholder': '0~5'}))
+
+
     
-    review_title = forms.CharField(max_length=256)
+    review_title = forms.CharField(max_length=256,
+                                   widget=forms.TextInput(attrs={
+                                                               'class': 'form-control',}))
     
     def clean_review_text(self):
         review_text = self.cleaned_data.get("review_text")
