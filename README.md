@@ -12,4 +12,4 @@
 
     http://localhost:8000 にアクセス
 
-![drawio](book-managament/Untitled Diagram.drawio)
+![drawio](./Untitled Diagram.drawio)
