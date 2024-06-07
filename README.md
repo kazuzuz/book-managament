@@ -6,8 +6,10 @@
 
 ## 利用技術
 
-仮想環境をアクティブにするには
+## サイトの立ち上げ方法
 
-docker compose up
+    docker compose up
 
-docker exec -it コンテナ名 bash
+    http://localhost:8000 にアクセス
+
+![](./Untitled Diagram.drawio)
