@@ -12,4 +12,4 @@
 
     http://localhost:8000 にアクセス
 
-![](./Untitled Diagram.drawio)
+![drawio](./sample.drawio.svg)
